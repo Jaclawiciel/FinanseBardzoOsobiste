@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/master.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+		<title>Zarejestruj się</title>
+	</head>
+	<body>
+		<header class="header">
+			<div class="headerLogo headerElement">
+				<a href="../index.html"><img src="../images/baners/baner-white.png" alt="Logo FBO"></a>
+			</div>
+			<div class="headerTitle headerElement">
+				<h1>Rejestracja użytkownika</h1>
+			</div>
+		</header>
+		<main>
+			<section class="signUpSection">
+				<h1 class="signUpTitle">Rejestracja użytkownika</h1>
+				<form class="formDiv" action="" method="post">
+					<div class="formElement">
+						<span>Imie</span>
+						<input type="text" name="firstname" maxlength="20" title="Podaj swoje imię" autofocus>
+					</div>
+					<div class="formElement">
+						<span>Adres e-mail</span>
+						<input type="email" name="email" maxlength="20" title="Podaj swój adres e-mail">
+					</div>
+					<div class="formElement">
+						<span>Hasło</span>
+						<input class="" type="password" name="password" minlength="8" maxlength="20"
+						       title="Podaj swoje hasło">
+					</div>
+					<div class="formElement">
+						<span>Wiek</span>
+						<input type="date" name="dateOfBirth" placeholder="DD.MM.RRRR" max="31.05.2017"
+						       title="Podaj swoją datę urodzenia. Przyda się ona do obliczeń związanych z emeryturą. ">
+					</div>
+					<div class="buttonDiv">
+						<input class="button" type="submit" value="Zarejestruj mnie" style="cursor:pointer">
+					</div>
+				</form>
+			</section>
+		</main>
+		<footer>
+			<p><a href="http://jacekgalka.pl">&copy; 2016 Jacek Gałka</a></p>
+		</footer>
+	</body>
+</html>
