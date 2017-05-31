@@ -288,6 +288,6 @@ span.passwordOk {
     display: none;
 }
 
-span#noAccountYet {
+#noAccountYet {
     text-align: center;
 }
