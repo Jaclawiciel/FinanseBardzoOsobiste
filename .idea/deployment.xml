@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="xampp" uploadOnCheckin="4496fed0-c9f7-40a3-bf7c-e662771b2669">
+  <component name="PublishConfigData" autoUpload="Always" serverName="xampp" deleteMissingItems="true" createEmptyFolders="true" uploadOnCheckin="4496fed0-c9f7-40a3-bf7c-e662771b2669">
+    <serverData>
+      <paths name="xampp">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/App" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
     <option name="myUploadOnCheckinName" value="xampp" />
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

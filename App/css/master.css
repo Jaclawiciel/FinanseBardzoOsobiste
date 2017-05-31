@@ -170,6 +170,10 @@ main {
     flex: 1;
 }
 
+footer address {
+    font-style: normal;
+}
+
 /*** GENERAL HOVERABLE ***/
 
 .buttonDiv {
@@ -272,4 +276,14 @@ main {
 input.formElementError {
     border: solid 1px var(--error);
     box-shadow: 0 0 5px var(--error);
+}
+
+span.passwordError {
+    font-weight: 300;
+    color: var(--error);
+    font-size: 13px;
+}
+
+span.passwordOk {
+    display: none;
 }

@@ -59,12 +59,12 @@
         margin: 0 auto;
     }
 
-    /*** SIGN UP PAGE ***/
-    .signUpTitle {
+    /*** SIGN PAGES ***/
+    .signTitle {
         display: none;
     }
 
-    .signUpSection {
+    .signSection {
         margin-top: 50px;
     }
 
