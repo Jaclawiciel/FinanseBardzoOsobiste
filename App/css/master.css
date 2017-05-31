@@ -287,3 +287,7 @@ span.passwordError {
 span.passwordOk {
     display: none;
 }
+
+span#noAccountYet {
+    text-align: center;
+}
