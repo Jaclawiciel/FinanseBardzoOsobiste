@@ -138,12 +138,19 @@ nav a {
 /*** GENERAL MAIN ***/
 
 main {
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
+}
+
+article h1 {
+    max-width: 90%;
+    margin: 20px auto 15px;
 }
 
 article p {
     line-height: 24px;
+    max-width: 90%;
+    margin: 15px auto;
 }
 
 /*** GENERAL FOOTER ***/
@@ -290,4 +297,33 @@ span.passwordOk {
 
 #noAccountYet {
     text-align: center;
+}
+
+/*** INTRODCTION ***/
+
+.greyTextBaner {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px 0px;
+    background-color: var(--lightGrey);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stepsList {
+    max-width: 90%;
+    margin: 15px auto;
+    padding: 0;
+}
+
+.stepsList .stepLine {
+    margin: 15px 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--orange);
 }
