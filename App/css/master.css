@@ -8,6 +8,11 @@
     --darkGrey: #43435A;
     --fontColor: #4A4A4A;
     --error: #D0011B;
+    --category: #F5F5F5;
+    --categoryBorder: #858585;
+    --categoryAmountGreen: #3E8E27;
+    --categoryAmountYellow: #EE962C;
+    --categoryAmountGrey: #BCBBC0;
 }
 
 body {
@@ -139,6 +144,7 @@ nav a {
 
 main {
     max-width: 100%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -208,8 +214,7 @@ footer address {
 /*** LANDING PAGE ***/
 
 #linkHome, #linkLoginPage {
-    background-position: left center;
-    background-repeat: no-repeat;
+    background: no-repeat left center;
     background-size: contain;
     padding-left: 30px;
 }
@@ -305,7 +310,7 @@ span.passwordOk {
     display: block;
     text-align: center;
     margin: 20px 0;
-    padding: 15px 0px;
+    padding: 15px 0;
     background-color: var(--lightGrey);
     color: #fff;
     text-transform: uppercase;
@@ -326,4 +331,153 @@ span.passwordOk {
     font-weight: 600;
     font-size: 20px;
     color: var(--orange);
+}
+
+/*** BUDGET ***/
+
+.budgetHeader {
+    background-color: var(--darkGrey);
+    color: #fff;
+    padding: 5px 0;
+}
+
+.hamburger {
+    /*margin-left: 15px;*/
+}
+
+/* Budget header */
+
+.budgetHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Header elements (on the right side) */
+
+.headerElements {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.monthDiv, .toBudgetDiv {
+    margin: 5px 0;
+}
+
+/* Month */
+
+.monthDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.curMonth {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 20px;
+}
+
+/* To budget */
+
+.toBudgetDiv {
+    background-color: var(--orange);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    padding: 5px 20px;
+}
+
+.toBudgetAmount, .toBudgetDesc {
+    margin: 0 auto;
+}
+
+.toBudgetAmount {
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px #000;
+}
+
+.toBudgetDesc {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+/* Category group */
+
+.group, .category {
+    background-color: var(--lightGrey);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5px;
+}
+
+.groupNameDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.groupName {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.groupAmount {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Category */
+
+.category {
+    background-color: var(--category);
+    color: var(--fontColor);
+    font-size: 18px;
+    border-bottom: 1px solid var(--categoryBorder);
+}
+
+.categoryAmount {
+    font-weight: 700;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.amountGreen {
+    background-color: var(--categoryAmountGreen);
+}
+
+.amountYellow {
+    background-color: var(--categoryAmountYellow);
+}
+
+.amountGrey {
+    background-color: var(--categoryAmountGrey);
+}
+
+/* New group button */
+
+.newGroup {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--categoryBorder);
+}
+
+.newGroup span {
+    margin-left: 5px;
+}
+
+/* SUM */
+
+.sum {
+    background-color: var(--orange);
+    color: #fff;
+    font-weight: 700;
 }

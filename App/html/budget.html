@@ -5,13 +5,113 @@
 		<meta name="viewport"
 		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/master.css">
+		<link rel="stylesheet" href="../css/responsive.css">
 		<title>FBO | Budżet</title>
 	</head>
 	<body>
 		<header class="budgetHeader">
 			<div class="hamburger">
-				<img src="../"
+				<img src="../images/icons/svg/hamburger.svg" style="width: 40px; height: 40px">
+			</div>
+			<div class="headerElements">
+				<div class="monthDiv">
+					<img class="monthDivElement" src="../images/icons/svg/back.svg" style="width: 20px; height: 20px"
+					     alt="Poprzedni miesiąc">
+					<span class="curMonth monthDivElement">Maj 2017</span>
+					<img class="monthDivElement" src="../images/icons/svg/next.svg" style="width: 20px; height: 20px"
+					     alt="Następny miesiąc">
+				</div>
+				<div class="toBudgetDiv">
+					<span class="toBudgetAmount">1 500,00 zł</span>
+					<span class="toBudgetDesc">Do rozdysponowania</span>
+				</div>
 			</div>
 		</header>
+		<main>
+			<section>
+				<div class="group">
+					<div class="groupNameDiv">
+						<span class="groupName">Najważniejsze po...</span>
+						<img src="../images/icons/svg/plus.svg" alt="Dodaj nową kategorię"
+						     style="width: 25px; height: 25px">
+					</div>
+					<div class="groupAmountDiv">
+						<span class="groupAmount">3 950,00 zł</span>
+					</div>
+				</div>
+				<div class="category">
+					<span class="categoryName">Jedzenie i picie</span>
+					<span class="categoryAmount amountGreen">1 700,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Koszty leczenia i leki</span>
+					<span class="categoryAmount amountGreen">35,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Ubranie</span>
+					<span class="categoryAmount amountGreen">400,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Czynsz za mieszkanie</span>
+					<span class="categoryAmount amountGreen">460,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Opłaty za prąd</span>
+					<span class="categoryAmount amountGreen">90,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Koszty dojazdu do pracy</span>
+					<span class="categoryAmount amountYellow">180,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Higiena, kosmetyki, fryzjer</span>
+					<span class="categoryAmount amountGreen">220,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Środki czystości</span>
+					<span class="categoryAmount amountGreen">120,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Wydatki na szkołę i prze...</span>
+					<span class="categoryAmount amountGreen">220,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Telefon, internet</span>
+					<span class="categoryAmount amountGreen">220,00 zł</span>
+				</div>
+				<div class="category">
+					<span class="categoryName">Inne niezbędne potrzeby</span>
+					<span class="categoryAmount amountGrey">0,00 zł</span>
+				</div>
+				<div class="group">
+					<div class="groupNameDiv">
+						<span class="groupName">Raty, składki i podatki</span>
+						<img src="../images/icons/svg/plus.svg" alt="Dodaj nową kategorię"
+						     style="width: 25px; height: 25px">
+					</div>
+					<div class="groupAmountDiv">
+						<span class="groupAmount">1 300,00 zł</span>
+					</div>
+				</div>
+				<div class="category">
+					<span class="categoryName">Rata kredytu hipoteczn...</span>
+					<span class="categoryAmount amountGreen">1 300,00 zł</span>
+				</div>
+				<div class="newGroup">
+					<img style="width: 25px" src="../images/icons/svg/plus-lightgrey.svg"
+					     alt="Dodaj nową grupę kategorii">
+					<span>Dodaj nową grupę</span>
+				</div>
+				<div class="category sum">
+					<span>SUMA</span>
+					<span>5 000,00 zł</span>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<p><a href="http://jacekgalka.pl">&copy; 2016 Jacek Gałka</a></p>
+		</footer>
 	</body>
 </html>
