@@ -1,4 +1,27 @@
 /*** Tablet ***/
+@media screen and (min-width: 568px) {
+    .budgetHeader {
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .headerElements {
+        flex-flow: row;
+        justify-content: space-around;
+        width: 95%;
+    }
+
+    .hamburger {
+        margin-left: 15px;
+        width: 5%;
+    }
+
+    .monthDiv, .toBudgetDiv {
+
+        margin: 0 30px;
+    }
+}
+
 @media screen and (min-width: 768px) {
 
     .header .headerLogo {
@@ -13,6 +36,55 @@
     /*** INTRODUCTION PAGE ***/
     .greyTextBaner {
         font-size: 20px;
+    }
+
+    /*** BUDGET PAGE ***/
+    /* Budget description */
+    .budgetDescription {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--orange);
+        font-weight: 100;
+        padding: 10px 5px;
+    }
+
+    .budgetDescCatName {
+    }
+
+    .budgetDescAmounts {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .budgetDescAmounts span {
+        margin-left: 25%;
+    }
+
+    /* Budget categories */
+    .groupAmountHidable {
+        display: inline;
+    }
+
+    .group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .groupNameDiv {
+        width: 40%;
+    }
+
+    .groupAmountDiv {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .groupAmount {
+        margin-left: 25%;
     }
 
 }

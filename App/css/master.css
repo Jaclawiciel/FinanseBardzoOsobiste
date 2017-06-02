@@ -382,6 +382,12 @@ span.passwordOk {
 
 /* To budget */
 
+.budgetDescription, .groupAmountHidable, .categoryAmountHidable {
+    display: none;
+}
+
+
+
 .toBudgetDiv {
     background-color: var(--orange);
     display: flex;
