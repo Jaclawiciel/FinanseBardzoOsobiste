@@ -39,54 +39,6 @@
     }
 
     /*** BUDGET PAGE ***/
-    /* Budget description */
-    .budgetDescription {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: var(--orange);
-        font-weight: 100;
-        padding: 10px 5px;
-    }
-
-    .budgetDescCatName {
-    }
-
-    .budgetDescAmounts {
-        width: 50%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .budgetDescAmounts span {
-        margin-left: 25%;
-    }
-
-    /* Budget categories */
-    .groupAmountHidable {
-        display: inline;
-    }
-
-    .group {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .groupNameDiv {
-        width: 40%;
-    }
-
-    .groupAmountDiv {
-        width: 50%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .groupAmount {
-        margin-left: 25%;
-    }
-
 }
 
 @media screen and (min-width: 1024px) {

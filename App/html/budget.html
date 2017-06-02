@@ -31,97 +31,116 @@
 		</header>
 		<main>
 			<section>
-				<div class="budgetDescription">
-					<span class="budgetDescCatName">Kategoria</span>
-					<div class="budgetDescAmounts">
-						<span>Rozdysponowane</span>
-						<span>Wydane</span>
-						<span>Dostępne</span>
-					</div>
-				</div>
-				<div class="group">
-					<div class="groupNameDiv">
-						<span class="groupName">Najważniejsze po...</span>
-						<img src="../images/icons/svg/plus.svg" alt="Dodaj nową kategorię"
-						     style="width: 25px; height: 25px">
-					</div>
-					<div class="groupAmountDiv">
-						<span class="groupAmount groupAmountHidable">3950,00zł</span>
-						<span class="groupAmount groupAmountHidable">32130,00 zł</span>
-						<span class="groupAmount">3 950,00 zł</span>
-					</div>
-				</div>
-				<div class="category">
-					<span class="categoryName">Jedzenie i picie</span>
-					<div class="categoryAmounts">
-						<span class="categoryAmount categoryAmountHidable">1 700,00 zł</span>
-						<span class="categoryAmount categoryAmountHidable">0,00 zł</span>
-						<span class="categoryAmount amountGreen">1 700,00 zł</span>
-					</div>
-				</div>
-				<div class="category">
-					<span class="categoryName">Koszty leczenia i leki</span>
-					<span class="categoryAmount amountGreen">35,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Ubranie</span>
-					<span class="categoryAmount amountGreen">400,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Czynsz za mieszkanie</span>
-					<span class="categoryAmount amountGreen">460,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Opłaty za prąd</span>
-					<span class="categoryAmount amountGreen">90,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Koszty dojazdu do pracy</span>
-					<span class="categoryAmount amountYellow">180,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Higiena, kosmetyki, fryzjer</span>
-					<span class="categoryAmount amountGreen">220,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Środki czystości</span>
-					<span class="categoryAmount amountGreen">120,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Wydatki na szkołę i prze...</span>
-					<span class="categoryAmount amountGreen">220,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Telefon, internet</span>
-					<span class="categoryAmount amountGreen">220,00 zł</span>
-				</div>
-				<div class="category">
-					<span class="categoryName">Inne niezbędne potrzeby</span>
-					<span class="categoryAmount amountGrey">0,00 zł</span>
-				</div>
-				<div class="group">
-					<div class="groupNameDiv">
-						<span class="groupName">Raty, składki i podatki</span>
-						<img src="../images/icons/svg/plus.svg" alt="Dodaj nową kategorię"
-						     style="width: 25px; height: 25px">
-					</div>
-					<div class="groupAmountDiv">
-						<span class="groupAmount">1 300,00 zł</span>
-					</div>
-				</div>
-				<div class="category">
-					<span class="categoryName">Rata kredytu hipoteczn...</span>
-					<span class="categoryAmount amountGreen">1 300,00 zł</span>
-				</div>
-				<div class="newGroup">
-					<img style="width: 25px" src="../images/icons/svg/plus-lightgrey.svg"
-					     alt="Dodaj nową grupę kategorii">
-					<span>Dodaj nową grupę</span>
-				</div>
-				<div class="category sum">
-					<span>SUMA</span>
-					<span>5 000,00 zł</span>
-				</div>
+				<table class="budgetTableContainer">
+					<thead>
+					<tr class="budDesc">
+						<th class="budDescName">Kategoria</th>
+						<th class="budDescAmount hideable">Rozdysponowane</th>
+						<th class="budDescAmount hideable">Wydane</th>
+						<th class="budDescAmount">Dostępne</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="budGroup">
+						<td class="budGroupName">Najważniejsze po... <img src="../images/icons/svg/plus.svg"
+						                                                  alt="Dodaj nową kategorię"
+						                                                  style="width: 20px"></td>
+						<td class="budGroupAmount hideable">3 950,00 zł</td>
+						<td class="budGroupAmount hideable">200,00 zł</td>
+						<td class="budGroupAmount">3 750,00 zł</td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Jedzenie i picie</td>
+						<td class="budCatAmount hideable">1 700,00 zł</td>
+						<td class="budCatAmount hideable">200,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">1 500,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Koszty leczenia i leki</td>
+						<td class="budCatAmount hideable">35,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">35,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Ubranie</td>
+						<td class="budCatAmount hideable">500,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">500,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Czynsz za mieszkanie</td>
+						<td class="budCatAmount hideable">460,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">460,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Prąd</td>
+						<td class="budCatAmount hideable">90,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">90,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Koszty dojazdu do pracy</td>
+						<td class="budCatAmount hideable">180,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="yellowAmount">180,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Higiena, kosmetyki, fryzjer</td>
+						<td class="budCatAmount hideable">220,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">220,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Środki czystości</td>
+						<td class="budCatAmount hideable">120,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">120,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Wydatki na szkołe i przedszkole</td>
+						<td class="budCatAmount hideable">550,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">550,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Telefon, internet</td>
+						<td class="budCatAmount hideable">95,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">95,00 zł</span></td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Inne niezbędne potrzeby</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greyAmount">0,00 zł</span></td>
+					</tr>
+					<tr class="budGroup">
+						<td class="budGroupName">Raty składki i podatki <img src="../images/icons/svg/plus.svg"
+						                                                     alt="Dodaj nową kategorię"
+						                                                     style="width: 20px"></td>
+						<td class="budGroupAmount hideable">1 300,00 zł</td>
+						<td class="budGroupAmount hideable">0,00 zł</td>
+						<td class="budGroupAmount">1 300,00 zł</td>
+					</tr>
+					<tr class="budCategory">
+						<td class="budCatName">Rata kredytu hipotecznego</td>
+						<td class="budCatAmount hideable">1 300,00 zł</td>
+						<td class="budCatAmount hideable">0,00 zł</td>
+						<td class="budCatAmount budCatAvailable"><span class="greenAmount">1 300,00 zł</span></td>
+					</tr>
+					<tr class="budNewGroup">
+						<td id="newGroupTD">
+							Dodaj nową grupę
+						</td>
+						<td></td>
+					</tr>
+					<tr class="budSum">
+						<td class="budSumName">SUMA</td>
+						<td class="budSumAmount">5 000,00 zł</td>
+					</tr>
+					</tbody>
+				</table>
 			</section>
 		</main>
 		<footer>
