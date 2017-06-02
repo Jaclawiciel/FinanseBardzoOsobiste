@@ -7,12 +7,12 @@
     --orange: #F26921;
     --darkGrey: #43435A;
     --fontColor: #4A4A4A;
-    --error: #D0011B;
+    --red: #D0011B;
     --category: #F5F5F5;
     --categoryBorder: #858585;
-    --categoryAmountGreen: #3E8E27;
-    --categoryAmountYellow: #EE962C;
-    --categoryAmountGrey: #BCBBC0;
+    --green: #3E8E27;
+    --yellow: #EE962C;
+    --grey: #BCBBC0;
 }
 
 body {
@@ -286,13 +286,13 @@ footer address {
 }
 
 input.formElementError {
-    border: solid 1px var(--error);
-    box-shadow: 0 0 5px var(--error);
+    border: solid 1px var(--red);
+    box-shadow: 0 0 5px var(--red);
 }
 
 span.passwordError {
     font-weight: 300;
-    color: var(--error);
+    color: var(--red);
     font-size: 13px;
 }
 
@@ -341,16 +341,13 @@ span.passwordOk {
     padding: 5px 0;
 }
 
-.hamburger {
-    /*margin-left: 15px;*/
-}
-
 /* Budget header */
 
 .budgetHeader {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 }
 
 /* Header elements (on the right side) */
@@ -360,11 +357,10 @@ span.passwordOk {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-}
-
-.monthDiv, .toBudgetDiv {
     margin: 5px 0;
 }
+
+
 
 /* Month */
 
@@ -372,6 +368,7 @@ span.passwordOk {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: 5px 0 10px;
 }
 
 .curMonth {
@@ -383,12 +380,23 @@ span.passwordOk {
 /* To budget */
 
 .toBudgetDiv {
-    background-color: var(--orange);
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
     padding: 5px 20px;
+}
+
+.toBudgetDiv.greenAmount {
+    background-color: var(--green);
+}
+
+.toBudgetDiv.yellowAmount {
+    background-color: var(--yellow);
+}
+
+.toBudgetDiv.redAmount {
+    background-color: var(--red);
 }
 
 .toBudgetAmount, .toBudgetDesc {
@@ -472,15 +480,15 @@ td {
 }
 
 .budCategory span.greenAmount {
-    background-color: var(--categoryAmountGreen);
+    background-color: var(--green);
 }
 
 .budCategory span.yellowAmount {
-    background-color: var(--categoryAmountYellow);
+    background-color: var(--yellow);
 }
 
 .budCategory span.greyAmount {
-    background-color: var(--categoryAmountGrey);
+    background-color: var(--grey);
 }
 
 /* New group */

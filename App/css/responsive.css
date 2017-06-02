@@ -13,13 +13,21 @@
 
     .hamburger {
         margin-left: 15px;
-        width: 5%;
     }
 
     .monthDiv, .toBudgetDiv {
 
         margin: 0 30px;
     }
+
+    .budgetTableContainer .hideable {
+        display: table-cell;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    /*** BUDGET PAGE ***/
+
 }
 
 @media screen and (min-width: 768px) {
@@ -38,7 +46,6 @@
         font-size: 20px;
     }
 
-    /*** BUDGET PAGE ***/
 }
 
 @media screen and (min-width: 1024px) {
