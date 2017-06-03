@@ -20,14 +20,9 @@
         margin: 0 30px;
     }
 
-    .budgetTableContainer .hideable {
+    .budgetTable .hideable {
         display: table-cell;
     }
-}
-
-@media screen and (min-width: 667px) {
-    /*** BUDGET PAGE ***/
-
 }
 
 @media screen and (min-width: 768px) {
@@ -91,11 +86,6 @@
         align-self: center;
     }
 
-    section {
-        max-width: 1024px;
-        margin: 0 auto;
-    }
-
     .hideTitle {
         display: none;
     }
@@ -111,17 +101,44 @@
         margin-top: 50px;
     }
 
-    @media screen and (min-width: 1440px) {
-        body {
-            max-width: 1440px;
-            margin: 0 auto;
-        }
-    }
+
 
     /*** INTRODUCTION PAGE ***/
     .greyTextBaner {
         max-width: 921.6px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /*** BUDGET PAGE ***/
+    .budgetGrid {
+        display: grid;
+        grid-template-columns: 25% 75%;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .budgetTableSection {
+        overflow-y: auto;
+        max-height: 100vh;
+    }
+
+    /* Menu */
+    .mainMenuContainer {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .widthLimit {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .budgetGrid {
+        display: grid;
+        grid-template-columns: 300px auto;
     }
 }

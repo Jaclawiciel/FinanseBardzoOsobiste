@@ -173,13 +173,13 @@ footer a {
 }
 
 /* sticky footer */
-body {
+body, .budgetTableSection {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-main {
+main, .budgetTable {
     flex: 1;
 }
 
@@ -348,6 +348,7 @@ span.passwordOk {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    flex: 1;
 }
 
 /* Header elements (on the right side) */
@@ -357,7 +358,7 @@ span.passwordOk {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    margin: 5px 0;
+    margin: 5px 30px 10px 0;
 }
 
 
@@ -416,10 +417,11 @@ span.passwordOk {
 
 /* Budget table */
 
-table.budgetTableContainer {
+table.budgetTable {
     width: 100%;
     border-collapse: collapse;
 }
+
 
 .budDescName, .budGroupName, .budCatName, .budSumName {
     text-align: left;
@@ -523,13 +525,125 @@ td {
     color: #fff;
 }
 
+/* Menu Container */
 
+.mainMenuContainer {
+    background-color: var(--orange);
+    color: #fff;
+    flex-flow: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
 
+.menuSettingsLink {
+    padding: 15px;
+}
 
+.mainMenuContainer {
+    display: none;
+}
 
+/* Main menu */
 
+.mainMenu {
+}
 
+/* Menu logo */
 
+.menuLogo {
+    width: 50%;
+    margin: 10px auto;
+}
 
+/* Menu buttons */
 
+.menuButton {
+    padding: 15px 10px;
+    font-size: 26px;
+    display: block;
+    margin: 5px 0;
+}
 
+.menuButton {
+    background: no-repeat left;
+    background-size: 40px;
+    background-position: 10px;
+    padding: 10px 0 10px 70px;
+    transition: background-color 0.5s;
+}
+
+.budgetButton {
+    background-image: url("../images/icons/svg/budget-white.svg");
+}
+
+.transactionsButton {
+    background-image: url("../images/icons/svg/transactions-white.svg");
+}
+
+.reportsButton {
+    background-image: url("../images/icons/svg/reports-white.svg");
+}
+
+.activeMenu {
+    background-color: #fff;
+}
+
+.activeMenu {
+    color: var(--orange);
+    background-image: url("../images/icons/svg/budget-orange.svg");
+}
+
+.menuButton:hover {
+    color: var(--orange);
+    background-color: #fff;
+}
+
+.budgetButton:hover {
+    background-image: url("../images/icons/svg/budget-orange.svg");
+}
+
+.transactionsButton:hover {
+    background-image: url("../images/icons/svg/transactions-orange.svg");
+}
+
+.reportsButton:hover {
+    background-image: url("../images/icons/svg/reports-orange.svg");
+}
+
+/* Menu accounts */
+
+.menuAccounts {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 40px;
+}
+
+.accountsDesc {
+    margin-bottom: 5px;
+}
+
+.accountDescName {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.accountDescSum {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.accounts {
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.account {
+    margin-left: 8px;
+    margin-top: 3px;
+}
+
+.accountsDesc, .account {
+    display: flex;
+    justify-content: space-between;
+}
