@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/master.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+		<title>FBO | Transakcje</title>
+	</head>
+	<body>
+		<div class="transactionsGrid">
+			<nav class="mainMenuContainer">
+				<div class="mainMenu">
+					<div class="menuLogo">
+						<img src="../images/baners/logo-white.png" alt="Logo FBO">
+					</div>
+					<div class="menuButtons">
+						<a href="budget.html" class="menuButton budgetButton ">Budżet</a>
+						<a href="transactions.html" class="menuButton transactionsButton activeMenu">Transakcje</a>
+						<a href="reports.html" class="menuButton reportsButton">Raporty</a>
+					</div>
+					<div class="menuAccounts">
+						<div class="accounts">
+							<div class="accountsDesc">
+								<span class="accountDescName">Budżet</span>
+								<span class="accountDescSum">4 850,00 zł</span>
+							</div>
+							<div class="account active">
+								<span class="accountName">Gotówka</span>
+								<span class="accountAmount">200,00 zł</span>
+							</div>
+							<div class="account">
+								<span class="accountName">Konto bieżące</span>
+								<span class="accountAmount">1 200,00 zł</span>
+							</div>
+							<div class="account">
+								<span class="accountName">Konto oszczędnościowe</span>
+								<span class="accountAmount">3 450,00 zł</span>
+							</div>
+						</div>
+						<div class="accounts">
+							<div class="accountsDesc">
+								<span class="accountDescName">Oszczędności</span>
+								<span class="accountDescSum">8 430,00 zł</span>
+							</div>
+							<div class="account">
+								<span class="accountName">Lokata</span>
+								<span class="accountAmount">3 000,00 zł</span>
+							</div>
+							<div class="account">
+								<span class="accountName">Fundusze inwestycyjne</span>
+								<span class="accountAmount">5 430,00 zł</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="menuSettingsLink">
+					<a href="settings.html"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
+					                             style="width: 60px"></a>
+				</div>
+			</nav>
+			<main class="transactionsMain">
+				<header class="transactionsHeader">
+					<div class="hamburger">
+						<img src="../images/icons/svg/hamburger.svg" style="width: 40px; height: 40px">
+					</div>
+					<div class="transHeadAccountName">
+						Gotówka
+					</div>
+					<div class="transHeadAccountBalances">
+						<div class="col accepted">
+							<span class="desc">Zaakceptowane</span>
+							<span class="balance">250,00 zł</span>
+						</div>
+						<span class="col symbol">+</span>
+						<div class="col waiting">
+							<span class="desc">Oczekujące</span>
+							<span class="balance">- 50,00 zł</span>
+						</div>
+						<span class="col symbol">=</span>
+						<div class="col balance">
+							<span class="desc">Stan konta</span>
+							<span class="balance">200,00 zł</span>
+						</div>
+					</div>
+				</header>
+				<section class="transactionsSection">
+					<header class="tableEditor">
+						<a href="" id="addTransaction">
+							<div><img src="../images/icons/svg/plus-orange.svg" alt="Dodaj nową" style="width: 25px">Dodaj
+								transakcję
+							</div>
+						</a>
+						<a href=""><img src="../images/icons/svg/edit.svg" style="width: 25px"></a>
+						<a href=""><img src="../images/icons/svg/delete.svg" style="width: 25px"></a>
+						<div></div>
+						<a>Filtruj</a>
+					</header>
+				</section>
+			</main>
+		</div>
+	</body>
+</html>

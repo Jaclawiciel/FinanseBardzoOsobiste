@@ -335,7 +335,7 @@ span.passwordOk {
 
 /*** BUDGET ***/
 
-.budgetHeader {
+.budgetHeader, .transactionsHeader {
     background-color: var(--darkGrey);
     color: #fff;
     padding: 5px 0;
@@ -613,13 +613,12 @@ td {
 /* Menu accounts */
 
 .menuAccounts {
-    padding-left: 15px;
-    padding-right: 15px;
     margin-top: 40px;
 }
 
 .accountsDesc {
     margin-bottom: 5px;
+    padding-left: 15px;
 }
 
 .accountDescName {
@@ -628,8 +627,9 @@ td {
 }
 
 .accountDescSum {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
+    padding-right: 12px;
 }
 
 .accounts {
@@ -639,11 +639,100 @@ td {
 }
 
 .account {
-    margin-left: 8px;
+    padding-left: 20px;
+    padding-right: 12px;
     margin-top: 3px;
 }
 
 .accountsDesc, .account {
     display: flex;
     justify-content: space-between;
+}
+
+/*** TRANSACTIONS ***/
+
+/* Header */
+
+.transactionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 10px;
+}
+
+.transactionsHeader .hamburger {
+    width: 50px;
+}
+
+.transactionsHeadElements {
+    width: auto;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    align-content: space-between;
+}
+
+.transHeadAccountName {
+    background-color: var(--orange);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px #000;
+}
+
+.transHeadAccountBalances {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.transactionsHeader .col {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.transactionsHeader .col .desc {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.transactionsHeader .col:last-child .balance {
+    font-weight: 600;
+}
+
+.transactionsHeader .col:nth-child(-n + 4) {
+    display: none;
+}
+
+/* Menu */
+
+.transactionsGrid .mainMenu .account.active,
+.transactionsGrid .mainMenu .account:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Transactions table editor */
+
+.tableEditor {
+    display: grid;
+    grid-template-rows: 35px;
+    grid-template-columns: 170px 50px 50px auto 50px;
+    border-top: 1px solid var(--categoryBorder);
+    border-bottom: 1px solid var(--categoryBorder);
+    align-items: center;
+}
+
+.transactionsSection .tableEditor #addTransaction div {
+    display: flex;
+    align-items: center;
+}
+
+.tableEditor #addTransaction div img {
+    margin-left: 8px;
+    margin-right: 5px;
 }

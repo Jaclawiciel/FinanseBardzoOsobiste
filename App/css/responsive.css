@@ -23,6 +23,11 @@
     .budgetTable .hideable {
         display: table-cell;
     }
+
+    /* Transactions */
+    .transactionsHeader .col:nth-child(-n + 4) {
+        display: flex;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -111,9 +116,9 @@
     }
 
     /*** BUDGET PAGE ***/
-    .budgetGrid {
+    .budgetGrid, .transactionsGrid {
         display: grid;
-        grid-template-columns: 25% 75%;
+        grid-template-columns: 300px auto;
     }
 
     .hamburger {
@@ -137,8 +142,7 @@
         margin: 0 auto;
     }
 
-    .budgetGrid {
-        display: grid;
-        grid-template-columns: 300px auto;
+    .budgetGrid, .transactionsGrid {
+
     }
 }
