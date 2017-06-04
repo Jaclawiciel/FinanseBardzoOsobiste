@@ -438,7 +438,7 @@ table.budgetTable {
 }
 
 /* Description row */
-th {
+.budgetTable th {
     padding: 5px 10px;
     border-top: 1px solid var(--categoryBorder);
     border-bottom: 1px solid var(--categoryBorder);
@@ -451,7 +451,7 @@ th {
 
 /* Group row */
 
-td {
+.budgetTable td {
     border-bottom: 1px solid var(--categoryBorder);
     border-left: 0;
     border-right: 0;
@@ -721,7 +721,7 @@ td {
 .tableEditor {
     display: grid;
     grid-template-rows: 35px;
-    grid-template-columns: 170px 50px 50px auto 50px;
+    grid-template-columns: 170px auto 50px;
     border-top: 1px solid var(--categoryBorder);
     border-bottom: 1px solid var(--categoryBorder);
     align-items: center;
@@ -735,4 +735,84 @@ td {
 .tableEditor #addTransaction div img {
     margin-left: 8px;
     margin-right: 5px;
+}
+
+.tableEditor #editTransaction,
+.tableEditor #deleteTransaction {
+    display: none;
+}
+
+/* Transactions table */
+
+table.transactionsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactionRow {
+    border-bottom: 1px solid var(--categoryBorder);
+    background-color: var(--category);
+}
+
+.tranElem {
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.tranDate, .tranName, .tranCat {
+    text-align: left;
+}
+
+.tranDate {
+    width: 10%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tranDate.tranElem {
+    font-style: italic;
+    font-weight: 100;
+}
+
+.transactionRow .small {
+    width: 100%;
+}
+
+.tranName.tranElem {
+    font-weight: 600;
+}
+
+.tranCat.tranElem {
+    opacity: 0.5;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.tranCost {
+    text-align: right;
+    width: 30%;
+}
+
+.tranCost.tranElem {
+    font-weight: 600;
+}
+
+.tranAccept {
+    text-align: center;
+    width: 15%;
+}
+
+.tranAccept.not {
+    opacity: 0.3;
+}
+
+/* Small screen tran name */
+
+.tranElem.hid, .tranDesc {
+    display: none;
+}
+
+.transactionRow .small {
+    display: flex;
+    flex-flow: column;
 }

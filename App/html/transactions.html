@@ -94,11 +94,68 @@
 								transakcję
 							</div>
 						</a>
-						<a href=""><img src="../images/icons/svg/edit.svg" style="width: 25px"></a>
-						<a href=""><img src="../images/icons/svg/delete.svg" style="width: 25px"></a>
+						<a id="editTransaction" href=""><img src="../images/icons/svg/edit.svg" style="width: 25px"></a>
+						<a id="deleteTransaction" href=""><img src="../images/icons/svg/delete.svg" style="width: 25px"></a>
 						<div></div>
 						<a>Filtruj</a>
 					</header>
+					<table class="transactionsTable">
+						<thead>
+						<tr class="tranDesc">
+							<th class="tranDescElem tranCheck"><input type="checkbox" name="checkAll"
+							                                          id="checkAllCheckbox"></th>
+							<th class="tranDescElem tranDate">Data transakcji</th>
+							<th class="tranDescElem tranName">Nazwa transakcji</th>
+							<th class="tranDescElem tranCat">Kategoria</th>
+							<th class="tranDescElem tranCost">Kwota transakcji</th>
+							<th class="tranDescElem tranAccept">Akceptacja</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr class="transactionRow">
+							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
+							</td>
+							<td class="tranElem tranDate">12.05.17</td>
+							<td class="small">
+								<span class="tranElem tranName">Tesco</span>
+								<span class="tranElem tranCat">Jedzenie i picie</span>
+							</td>
+							<td class="tranElem tranName hid">Tesco</td>
+							<td class="tranElem tranCat hid">Jedzenie i picie</td>
+							<td class="tranElem tranCost">-150,00 zł</td>
+							<td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
+							                                     alt="Akceptacja" style="width: 25px"></td>
+						</tr>
+						<tr class="transactionRow">
+							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran2">
+							</td>
+							<td class="tranElem tranDate">13.05.17</td>
+							<td class="small">
+								<span class="tranElem tranName">Rossmann</span>
+								<span class="tranElem tranCat">Kosmetyki</span>
+							</td>
+							<td class="tranElem tranName hid">Rossmann</td>
+							<td class="tranElem tranCat hid">Kosmetyki</td>
+							<td class="tranElem tranCost">-100,00 zł</td>
+							<td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
+							                                     alt="Akceptacja" style="width: 25px"></td>
+						</tr>
+						<tr class="transactionRow">
+							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran3">
+							</td>
+							<td class="tranElem tranDate">14.05.17</td>
+							<td class="small">
+								<span class="tranElem tranName">Rachunek za internet</span>
+								<span class="tranElem tranCat">Jedzenie i picie</span>
+							</td>
+							<td class="tranElem tranName hid">Rachunek za internet</td>
+							<td class="tranElem tranCat hid">Telefon, internet</td>
+							<td class="tranElem tranCost">-50,00 zł</td>
+							<td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
+							                                     alt="Akceptacja" style="width: 25px"></td>
+						</tr>
+						</tbody>
+					</table>
 				</section>
 			</main>
 		</div>

@@ -28,6 +28,70 @@
     .transactionsHeader .col:nth-child(-n + 4) {
         display: flex;
     }
+
+    .tableEditor {
+        grid-template-columns: 170px 50px 50px auto 50px;
+    }
+
+    .tableEditor #editTransaction,
+    .tableEditor #deleteTransaction {
+        display: block;
+    }
+
+    /* Transactions table */
+    .transactionRow .small {
+        display: none;
+    }
+
+    .tranElem.hid {
+        display: table-cell;
+    }
+
+    .tranDesc {
+        display: table-row;
+    }
+
+    .tranDescElem {
+        font-size: 12px;
+        opacity: 0.7;
+        border-bottom: 1px solid var(--categoryBorder);
+        padding: 5px 0;
+    }
+
+    .tranDescElem.tranCheck {
+        font-size: 16px;
+        opacity: 1;
+    }
+
+    .transactionsTable .tranCheck {
+        text-align: center;
+        width: 5%;
+    }
+
+    .transactionsTable input[type = checkbox] {
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .transactionsTable input[type = checkbox]:checked {
+        background-color: var(--orange);
+    }
+
+    .tranDate {
+        width: 15%;
+    }
+
+    .tranName {
+        width: 30%;
+    }
+
+    .tranCost {
+        width: 20%;
+    }
+
+    .tranAccept {
+        width: 10%;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -142,7 +206,12 @@
         margin: 0 auto;
     }
 
-    .budgetGrid, .transactionsGrid {
+    /*** TRANSACTIONS PAGE ***/
+    .tranCheck, .tranAccept {
+        width: 5%;
+    }
 
+    .tranDate {
+        width: 10%;
     }
 }
