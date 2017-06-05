@@ -582,15 +582,27 @@ table.budgetTable {
 
 .reportsButton {
     background-image: url("../images/icons/svg/reports-white.svg");
+    opacity: 0.5;
+    cursor: default;
 }
 
 .activeMenu {
     background-color: #fff;
 }
 
-.activeMenu {
+.budgetButton.activeMenu {
     color: var(--orange);
     background-image: url("../images/icons/svg/budget-orange.svg");
+}
+
+.transactionsButton.activeMenu {
+    color: var(--orange);
+    background-image: url("../images/icons/svg/transactions-orange.svg");
+}
+
+.reportsButton.activeMenu {
+    color: var(--orange);
+    background-image: url("../images/icons/svg/reports-orange.svg");
 }
 
 .menuButton:hover {
