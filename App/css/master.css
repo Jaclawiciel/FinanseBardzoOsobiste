@@ -173,7 +173,7 @@ footer a {
 }
 
 /* sticky footer */
-body, .budgetTableSection {
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
