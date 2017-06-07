@@ -9,9 +9,23 @@
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/responsive.css">
 		<title>FBO | Budżet</title>
+		<script>
+            function showModalSettings() {
+                document
+                    .getElementById("settingsOn")
+                    .style
+                    .cssText = "top:0px";
+                document.getElementById("blurDiv").style.cssText = "filter:blur(15px)";
+                window.scrollTo(0, 0);
+            }
+            function hideModalSettings() {
+                document.getElementById("blurDiv").style.cssText = "filter:none";
+                document.getElementById("settingsOn").style.cssText = "top:-450px";
+            }
+		</script>
 	</head>
 	<body>
-		<div class="budgetGrid">
+		<div class="budgetGrid" id="blurDiv">
 			<nav class="mainMenuContainer">
 				<div class="mainMenu">
 					<div class="menuLogo">
@@ -57,10 +71,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="menuSettingsLink">
-					<a href="settings.html"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
-					                             style="width: 60px"></a>
-				</div>
+				<button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
+				                                                                  style="width: 60px"></button>
 			</nav>
 			<main class="budgetMain">
 				<header class="budgetHeader">
@@ -199,5 +211,44 @@
 				</section>
 			</main>
 		</div>
+		<aside class="settingsModal" id="settingsOn">
+			<header class="settingsHeader">
+				<h1 class="settingsTitle">Ustawienia</h1>
+				<button class="closeSign" onclick="hideModalSettings()"><img
+						src="../images/icons/svg/close-orange.svg" alt="Close" style="width: 40px"></button>
+			</header>
+			<nav class="settingsTabs">
+				<div class="settingsTab userTab activeTab">
+					<span class="userSpan">Konto użytkownika</span>
+				</div>
+				<div class="settingsTab appTab notActiveTab">
+					<span class="appSpan">Aplikacja</span>
+				</div>
+			</nav>
+			<form class="formDiv" action="" method="GET">
+				<div class="formElement">
+					<span>Adres e-mail</span>
+					<input type="email" name="email" maxlength="20" title="Podaj swój nowy adres e-mail" autofocus>
+				</div>
+				<div class="formElement">
+					<span>Hasło</span>
+					<input class="" type="password" name="password" minlength="8" maxlength="20"
+					       title="Podaj swoje nowe hasło">
+				</div>
+				<div class="formElement">
+					<span>Data urodzenia</span>
+					<input class="" type="date" name="dateOfBirth" minlength="10" maxlength="10"
+					       title="Podaj swoją datę urodzenia">
+				</div>
+				<div class="buttons">
+					<div class="buttonDiv">
+						<input class="button" onclick="hideModalSettings()" type="submit" value="Zapisz" style="cursor:pointer">
+					</div>
+					<div class="buttonDiv">
+						<input class="button grey" onclick="hideModalSettings()" type="submit" value="Anuluj" style="cursor:pointer">
+					</div>
+				</div>
+			</form>
+		</aside>
 	</body>
 </html>

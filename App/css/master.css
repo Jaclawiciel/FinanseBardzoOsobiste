@@ -204,6 +204,10 @@ footer address {
     transition: background-color 0.3s, border-radius 0.3s;
 }
 
+.buttonDiv .button.grey {
+    background-color: var(--lightGrey);
+}
+
 .button:hover {
     background-color: #fff;
     border-radius: 8px;
@@ -535,10 +539,6 @@ table.budgetTable {
     min-height: 100vh;
 }
 
-.menuSettingsLink {
-    padding: 15px;
-}
-
 .mainMenuContainer {
     display: none;
 }
@@ -661,6 +661,30 @@ table.budgetTable {
     justify-content: space-between;
 }
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mainMenuContainer .settingsButton {
+    background: none;
+    width: 60px;
+    height: 60px;
+    text-align: left;
+    cursor: pointer;
+    margin: 10px;
+    padding: 0;
+    border: none;
+}
+
+.rotating:hover {
+    animation: rotating 2s linear infinite;
+}
+
 /*** TRANSACTIONS ***/
 
 /* Header */
@@ -723,8 +747,8 @@ table.budgetTable {
 
 /* Menu */
 
-.transactionsGrid .mainMenu .account.active,
-.transactionsGrid .mainMenu .account:hover {
+.mainMenu .account.active,
+.mainMenu .account:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -827,4 +851,111 @@ table.transactionsTable {
 .transactionRow .small {
     display: flex;
     flex-flow: column;
+}
+
+/*** SETTINGS ***/
+
+#blurDiv {
+    transition: filter 0.7s;
+}
+
+.settingsModal {
+    width: 100%;
+    margin-bottom: 40px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -450px;
+    transition: top 0.4s;
+    box-shadow: 0px 0px 10px 5px #888888;
+    overflow-y: auto;
+    background-color: rgba(200, 200, 203, 0.5);
+}
+
+
+/* Header */
+
+.settingsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settingsHeader .settingsTitle,
+.settingsHeader .closeSign {
+    margin-left: 15px;
+    margin-right: 15px;
+    background: none;
+}
+
+.settingsHeader .settingsTitle {
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.settingsHeader .closeSign {
+    display: block;
+}
+
+.settingsHeader button {
+    background-color: #fff;
+    border: none;
+}
+
+/* Tabs */
+
+.settingsTabs {
+    background: none;
+    color: var(--fontColor);
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+}
+
+.settingsTab {
+    width: 50%;
+    border-left: 1px solid var(--categoryBorder);
+    border-top: 1px solid var(--categoryBorder);
+    border-right: 1px solid var(--categoryBorder);
+    padding: 10px 0px 10px 10px;
+    background-color: #fff;
+}
+
+.settingsTab.activeTab {
+    padding: 15px 0px 15px 10px;
+    align-self: center;
+    border-left: 1px solid var(--orange);
+    border-top: 1px solid var(--orange);
+    border-right: 1px solid var(--orange);
+}
+
+.settingsTab.notActiveTab {
+    align-self: flex-end;
+    border-left: none;
+    border-bottom: 1px solid var(--orange);
+}
+
+.settingsModal .formDiv {
+    border-left: 1px solid var(--orange);
+    border-bottom: 1px solid var(--orange);
+    border-right: 1px solid var(--orange);
+    background-color: #fff;
+}
+
+/* Buttons */
+
+.settingsModal .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.settingsModal .buttonDiv {
+    margin: 10px 10px;
+}
+
+.settingsModal .buttons .button {
+    padding: 8px 35px;
 }

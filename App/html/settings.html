@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/master.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+		<title>FBO | Settings</title>
+		<script>
+            function showModalSettings() {
+                document
+                    .getElementById("settingsOn")
+                    .style
+                    .cssText = "top:0px";
+                document.getElementById("back-image").style.cssText = "filter:blur(10px)";
+            }
+            function hideModalSettings() {
+                document.getElementById("back-image").style.cssText = "filter:none";
+                document.getElementById("settingsOn").style.cssText = "top:-450px";
+
+            }
+		</script>
+	</head>
+	<body>
+		<div id="bodyDiv">
+
+			<div id="back-image">
+				<img src="../images/back.png" alt="Background" style="width: 100%; display: block">
+			</div>
+
+			<button onclick="showModalSettings()">Ustawienia</button>
+
+			<aside class="settingsModal" id="settingsOn">
+				<header class="settingsHeader">
+					<h1 class="settingsTitle">Ustawienia</h1>
+					<button class="closeSign" onclick="hideModalSettings()"><img
+							src="../images/icons/svg/close-orange.svg" alt="Close" style="width: 40px"></button>
+				</header>
+				<nav class="settingsTabs">
+					<div class="settingsTab userTab activeTab">
+						<span class="userSpan">Konto użytkownika</span>
+					</div>
+					<div class="settingsTab appTab notActiveTab">
+						<span class="appSpan">Aplikacja</span>
+					</div>
+				</nav>
+				<form class="formDiv" action="" method="GET">
+					<div class="formElement">
+						<span>Adres e-mail</span>
+						<input type="email" name="email" maxlength="20" title="Podaj swój nowy adres e-mail" autofocus>
+					</div>
+					<div class="formElement">
+						<span>Hasło</span>
+						<input class="" type="password" name="password" minlength="8" maxlength="20"
+						       title="Podaj swoje nowe hasło">
+					</div>
+					<div class="formElement">
+						<span>Data urodzenia</span>
+						<input class="" type="date" name="dateOfBirth" minlength="10" maxlength="10"
+						       title="Podaj swoją datę urodzenia">
+					</div>
+					<div class="buttons">
+						<div class="buttonDiv">
+							<input class="button" onclick="hideModalSettings()" type="submit" value="Zapisz"
+							       style="cursor:pointer">
+						</div>
+						<div class="buttonDiv">
+							<input class="button grey" onclick="hideModalSettings()" type="submit" value="Anuluj"
+							       style="cursor:pointer">
+						</div>
+					</div>
+
+				</form>
+			</aside>
+		</div>
+	</body>
+</html>
