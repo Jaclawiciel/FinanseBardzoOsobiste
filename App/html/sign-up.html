@@ -25,14 +25,20 @@
 				<form class="formDiv" action="" method="post">
 					<div class="formElement">
 						<span>Imie</span>
-						<input type="text" name="firstname" maxlength="20" title="Podaj swoje imię" autofocus>
+						<input type="text" name="firstname" maxlength="50" title="Podaj swoje imię" autofocus>
 					</div>
 					<div class="formElement">
 						<span>Adres e-mail</span>
-						<input type="email" name="email" maxlength="20" title="Podaj swój adres e-mail">
+						<input type="email" name="email" maxlength="50" title="Podaj swój adres e-mail">
 					</div>
 					<div class="formElement">
 						<span>Hasło</span>
+						<input class="" type="password" name="password" minlength="8" maxlength="20"
+						       title="Podaj swoje hasło">
+						<span class="passwordOk">Hasło musi zawierać co najmniej 8 znaków</span>
+					</div>
+					<div class="formElement">
+						<span>Powtórz hasło</span>
 						<input class="" type="password" name="password" minlength="8" maxlength="20"
 						       title="Podaj swoje hasło">
 						<span class="passwordOk">Hasło musi zawierać co najmniej 8 znaków</span>
