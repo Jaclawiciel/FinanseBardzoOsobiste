@@ -208,11 +208,15 @@ footer address {
     background-color: var(--lightGrey);
 }
 
-.button:hover {
+.button:hover, .button:enabled:hover {
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid var(--orange);
     color: var(--orange);
+}
+
+.button:disabled {
+    opacity:0.3;
 }
 
 /*** LANDING PAGE ***/
@@ -289,18 +293,19 @@ footer address {
     box-shadow: 0 0 5px var(--orange);
 }
 
-input.formElementError {
+.inputError {
     border: solid 1px var(--red);
     box-shadow: 0 0 5px var(--red);
 }
 
-span.passwordError {
+span.formErrorMsg {
+    margin-top: 5px;
     font-weight: 300;
     color: var(--red);
     font-size: 13px;
 }
 
-span.passwordOk {
+span.formErrorMsg.ok {
     display: none;
 }
 
