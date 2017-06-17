@@ -22,7 +22,7 @@
 		<main>
 			<section class="signSection">
 				<h1 class="signTitle hideTitle">Logowanie użytkownika</h1>
-				<form class="formDiv" action="introduction.html" method="GET">
+				<form class="formDiv" action="introduction.php" method="GET">
 					<div class="formElement">
 						<span>Adres e-mail</span>
 						<input type="email" name="email" maxlength="20" title="Podaj swój adres e-mail" autofocus>
@@ -37,7 +37,7 @@
 					</div>
 				</form>
 				<div id="noAccountYet">
-					<span>Nie masz jeszcze konta? <a href="sign-up.html">Zarejestruj się</a></span>
+					<span>Nie masz jeszcze konta? <a href="sign-up.php">Zarejestruj się</a></span>
 				</div>
 			</section>
 		</main>

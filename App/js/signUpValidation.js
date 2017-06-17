@@ -86,8 +86,6 @@ function passwordRepeatVaidation(oldValue, newValue) {
 function validate(elementID) {
     'use strict';
 
-
-
     var formElement = document.getElementById(elementID);
     var formInput = formElement.children[1];
     var formInputValue = formInput.value;
@@ -97,7 +95,7 @@ function validate(elementID) {
     // First name
     if (elementID === 'firstNameElement') {
         if (empty(formInputValue)) {
-            setErrorElements(formInput, formErrorMsg, 'Pole nie może być puste', true);
+            setErrorElements(formInput, formErrorMsg, 'Pole \"Imię\" nie może być puste', true);
             formElement.classList.remove('valid');
         } else if (firstNameValidation(formInputValue)) {
             setErrorElements(formInput, formErrorMsg, 'Pole zawiera niedozwolone znaki. Wprowadź poprawnie swoje imię', true);
@@ -108,7 +106,7 @@ function validate(elementID) {
         }
     } else if (elementID === 'mailElement') {
         if (empty(formInputValue)) {
-            setErrorElements(formInput, formErrorMsg, 'Pole nie może być puste', true);
+            setErrorElements(formInput, formErrorMsg, 'Pole \"Adres e-mail\" nie może być puste', true);
             formElement.classList.remove('valid');
         } else if (mailValidation(formInputValue)) {
             setErrorElements(formInput, formErrorMsg, 'Pole zawiera niedozwolone znaki. Wprowadź poprawny adres e-mail', true);
@@ -119,7 +117,7 @@ function validate(elementID) {
         }
     } else if (elementID === 'passwordElement') {
         if (empty(formInputValue)) {
-            setErrorElements(formInput, formErrorMsg, 'Pole nie może być puste', true);
+            setErrorElements(formInput, formErrorMsg, 'Pole \"Hasło\" nie może być puste', true);
             formElement.classList.remove('valid');
         } else if (passwordValidation(formInputValue)) {
             setErrorElements(formInput, formErrorMsg, 'Hasło musi zawierać co najmniej 8 znaków, dużą literę, małą literę oraz cyfrę.', true);
@@ -132,7 +130,7 @@ function validate(elementID) {
         var newValue = formInputValue;
         var oldValue = document.getElementById('passwordElement').children[1].value;
         if (empty(formInputValue)) {
-            setErrorElements(formInput, formErrorMsg, 'Pole nie może być puste', true);
+            setErrorElements(formInput, formErrorMsg, 'Pole \"Hasło\" nie może być puste', true);
             formElement.classList.remove('valid');
         } else if (passwordRepeatVaidation(oldValue, newValue)) {
             setErrorElements(formInput, formErrorMsg, 'Hasła nie zgadzają się. ', true);

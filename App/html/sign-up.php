@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php require '../php/userSignUp.php'; ?>
 <!doctype html>
 <html lang="pl">
 	<head>
@@ -23,28 +25,28 @@
 		<main>
 			<section class="signSection">
 				<h1 class="signTitle  hideTitle">Rejestracja użytkownika</h1>
-				<form class="formDiv" id="signUpForm" action="" method="post">
+				<form class="formDiv" id="signUpForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 					<div class="formElement" id="firstNameElement">
 						<span>Imię</span>
 						<input class="" type="text" name="firstname" maxlength="50" title="Podaj swoje imię" autofocus onfocusout="validate('firstNameElement')">
-						<span class="formErrorMsg ok"></span>
+						<span class="formErrorMsg ok"><?php echo $firstNameErr;?></span>
 					</div>
 					<div class="formElement" id="mailElement">
 						<span>Adres e-mail</span>
 						<input class="" type="email" name="email" maxlength="50" title="Podaj swój adres e-mail" onfocusout="validate('mailElement')">
-						<span class="formErrorMsg ok"></span>
+						<span class="formErrorMsg ok"><?php echo $emailErr;?></span>
 					</div>
 					<div class="formElement" id="passwordElement">
 						<span>Hasło</span>
 						<input class="" type="password" name="password" minlength="8" maxlength="20"
 						       title="Podaj swoje hasło" onfocusout="validate('passwordElement')">
-						<span class="formErrorMsg ok"></span>
+						<span class="formErrorMsg ok"><?php echo $passwordErr;?></span>
 					</div>
 					<div class="formElement" id="passwordRepeatElement">
 						<span>Powtórz hasło</span>
 						<input class="" type="password" name="passwordRepeat" minlength="8" maxlength="20"
 						       title="Podaj swoje hasło" onfocusout="validate('passwordRepeatElement')">
-						<span class="formErrorMsg ok"></span>
+						<span class="formErrorMsg ok"><?php echo $passwordRepeatErr;?></span>
 					</div>
 					<div class="buttonDiv">
 						<input id="submitButton" class="button" type="submit" value="Zarejestruj mnie" style="cursor:pointer" disabled>
