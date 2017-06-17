@@ -375,6 +375,8 @@ span.formErrorMsg.ok {
     }
 }
 
+/* Fixed headers */
+
 .budgetHeader, .transactionsHeader {
     color: #fff;
     padding: 5px 0;
@@ -382,6 +384,38 @@ span.formErrorMsg.ok {
     width: 100%;
     top: 0;
     left: 0;
+}
+
+.budgetTable .budDesc {
+    position: fixed;
+    top: 105px;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.budDesc .budDescName {
+    text-align: left;
+}
+
+.budDesc .budDescAmount {
+    text-align: right;
+}
+
+
+/* slightly transparent fallback */
+.budgetTable .budDesc {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+/* if backdrop support: very transparent and blurred */
+@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+    .budgetTable .budDesc {
+        background-color: rgba(255, 255, 255, .5);
+        -webkit-backdrop-filter: blur(2em);
+        backdrop-filter: blur(2em);
+    }
 }
 
 /* Budget header */
@@ -461,7 +495,7 @@ span.formErrorMsg.ok {
 /* Budget table */
 
 .budgetTableSection {
-    padding-top: 105px;
+    padding-top: 135px;
 }
 
 table.budgetTable {
@@ -470,12 +504,12 @@ table.budgetTable {
 }
 
 
-.budDescName, .budGroupName, .budCatName, .budSumName {
+/*.budDescName*/ .budGroupName, .budCatName, .budSumName {
     text-align: left;
     width: 40%;
 }
 
-.budDescAmount, .budGroupAmount, .budCatAmount, .budSumAmount {
+/*.budDescAmount, */.budGroupAmount, .budCatAmount, .budSumAmount {
     text-align: right;
     width: 20%;
 }

@@ -3,8 +3,13 @@
 
     /* Budget */
 
+    .budgetTable .budDesc {
+        top: 85px;
+        grid-template-columns: 40% 20% 20% 20%;
+    }
+
     .budgetTableSection {
-        padding-top: 85px;
+        padding-top: 115px;
     }
 
     .budgetHeader {
@@ -107,7 +112,7 @@
     .settingsModal {
         max-width: 50%;
         position: absolute;
-        top: -450px;
+        top: -500px;
         left: 25%;
         margin: 0 auto;
         box-shadow: 0px 0px 20px 1px #888;
@@ -212,6 +217,11 @@
 
     .hamburger {
         display: none;
+    }
+
+    .budgetTable .budDesc {
+        left: 300px;
+        width: calc(100% - 300px);
     }
 
     /* Menu */
