@@ -1,5 +1,12 @@
 /*** Tablet ***/
 @media screen and (min-width: 568px) {
+
+    /* Budget */
+
+    .budgetTableSection {
+        padding-top: 85px;
+    }
+
     .budgetHeader {
         justify-content: space-between;
         padding: 10px 0;
@@ -198,18 +205,26 @@
         grid-template-columns: 300px auto;
     }
 
-    .hamburger {
-        display: none;
+    .budgetHeader {
+        left: 300px;
+        width: calc(100% - 300px);
     }
 
-    .budgetTableSection {
-        overflow-y: auto;
-        max-height: 100vh;
+    .hamburger {
+        display: none;
     }
 
     /* Menu */
     .mainMenuContainer {
         display: flex;
+    }
+
+    .mainMenuContainer, .budgetTableSection {
+        max-height: 100vh;
+    }
+
+    .budgetTableSection {
+        overflow-y: auto;
     }
 }
 
