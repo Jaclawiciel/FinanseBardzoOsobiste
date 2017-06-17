@@ -30,7 +30,7 @@ if (empty($_SESSION["userID"]) || empty($_SESSION['password'])) {
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $conn = null;
+    $connection = null;
 }
 ?>
 <!doctype html>

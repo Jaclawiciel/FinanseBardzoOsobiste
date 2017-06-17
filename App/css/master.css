@@ -313,6 +313,23 @@ span.formErrorMsg.ok {
     text-align: center;
 }
 
+@keyframes disappear {
+    0% { opacity: 0.2; }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.dbError {
+    color: var(--red);
+    text-align: center;
+    font-weight: 300;
+    animation: disappear 1s ease-out 1s infinite;
+}
+
 /*** INTRODCTION ***/
 
 .greyTextBaner {

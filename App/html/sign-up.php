@@ -25,6 +25,7 @@
 		<main>
 			<section class="signSection">
 				<h1 class="signTitle  hideTitle">Rejestracja użytkownika</h1>
+                <h3 class="dbError"></h3>
 				<form class="formDiv" id="signUpForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 					<div class="formElement" id="firstNameElement">
 						<span>Imię</span>

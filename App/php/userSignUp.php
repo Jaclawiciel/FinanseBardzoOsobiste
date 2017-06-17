@@ -86,7 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: introduction.php');
 
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            $dbError = "Użytkownik z podanym adresem e-mail już istnieje";
+//            echo "Connection failed: " . $e->getMessage();
         }
         $connection = null;
     }
