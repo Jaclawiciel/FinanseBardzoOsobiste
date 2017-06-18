@@ -5,6 +5,7 @@
  * Date: 17.06.2017
  * Time: 16:55
  */
+session_start();
 
 function test_input($data) {
     $data = trim($data);
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             return $data;
         }
 
-        $retUserId = $retMail = $retPassword = "";
+        $retUserID = $retMail = $retPassword = "";
 
         $quotedEMail = quoter($email);
 
@@ -61,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
             if (($email == $retMail) && ($password == $retPassword)) {
 
-                $_SESSION['userID'] = $retUserId;
+                $_SESSION['userID'] = $retUserID;
                 $_SESSION['password'] = $retPassword;
                 echo "OK";
             } else {

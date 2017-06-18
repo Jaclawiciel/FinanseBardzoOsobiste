@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php require '../php/isSignedInOnLogin.php'; ?>
 <!doctype html>
 <html lang="pl">
 	<head>

@@ -111,7 +111,7 @@ if (empty($_SESSION["userID"]) || empty($_SESSION['password'])) {
 					</ul>
 				</article>
 				<div class="buttonDiv">
-					<a href="budget.html" class="button">Zaczynamy!</a>
+					<a href="budget.php" class="button">Zaczynamy!</a>
 				</div>
 			</section>
 		</main>

@@ -6,7 +6,7 @@
  * Time: 16:04
  */
 
-if (!(empty($_SESSION['userID']) || empty($_SESSION['password']))) {
+if (!(empty($_SESSION['userID'])) && !(empty($_SESSION['password']))) {
     $dbServername = "localhost";
     $dbUsername = "root";
     $dbPassword = "^79q+a8&}u9/4Un";
@@ -25,11 +25,17 @@ if (!(empty($_SESSION['userID']) || empty($_SESSION['password']))) {
             $password = $row['PassHash'];
         }
         if (($userID == $_SESSION['userID']) && ($password == $_SESSION['password'])) {
-            header("Location: budget.html");
+            if (htmlspecialchars($_SERVER['PHP_SELF']) == "/html/sign-in.php") {
+                header("Location: budget.php");
+            }
+        } else {
+            header("Location: sign-in.php");
         }
     }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     $connection = null;
+} elseif (!(htmlspecialchars($_SERVER['PHP_SELF']) == "/html/sign-in.php")) {
+    header("Location: sign-in.php");
 }

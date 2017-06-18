@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php include '../php/isSignedIn.php'; ?>
+<?php include '../php/isSignedInOnLogin.php'; ?>
 
 <!doctype html>
 <html lang="pl">
@@ -81,7 +81,7 @@
                         msgDisplay.innerHTML = this.responseText;
                         msgDisplay.style.cssText = "display: block; opacity: 0";
                         if (this.responseText == "OK") {
-                            window.location.replace("../html/budget.html");
+                            window.location.replace("../html/budget.php");
                         }
                     }
                 };
