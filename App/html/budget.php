@@ -23,7 +23,23 @@
             }
             function hideModalSettings() {
                 document.getElementById("blurDiv").style.cssText = "filter:none";
-                document.getElementById("settingsOn").style.cssText = "top:-500px;";
+                document
+                    .getElementById("settingsOn")
+                    .style
+                    .cssText = "top:-500px";
+            }
+            function showMenu(state) {
+                var body = document.getElementsByTagName("body")[0];
+                var menuContainer = document.getElementsByClassName('mainMenuContainer')[0];
+                if (state) {
+                    document.getElementById("blurDiv2").style.cssText = "filter:blur(15px)";
+                    menuContainer.style.cssText = "left: 0; overflow-y: scroll";
+                    body.style.cssText = "overflow: hidden; position: fixed";
+                } else {
+                    document.getElementById("blurDiv2").style.cssText = "filter:none";
+                    menuContainer.style.cssText = "left: -95%;";
+                    body.style.cssText = "overflow: auto; position: static"
+                }
             }
 		</script>
 	</head>
@@ -32,7 +48,10 @@
 			<nav class="mainMenuContainer">
 				<div class="mainMenu">
 					<div class="menuLogo">
-						<img src="../images/baners/logo-white.png" alt="Logo FBO">
+						<img class="logo" src="../images/baners/logo-white.png" alt="Logo FBO">
+                        <button class="closeSign" onclick="showMenu(false)">
+                            <img src="../images/icons/svg/close-white.svg" alt="Zamknij menu" style="width: 40px">
+                        </button>
 					</div>
 					<div class="menuButtons">
 						<a href="budget.html" class="menuButton budgetButton activeMenu">Budżet</a>
@@ -77,10 +96,12 @@
 				<button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
 				                                                                  style="width: 60px"></button>
 			</nav>
-			<main class="budgetMain">
+			<main class="budgetMain" id="blurDiv2">
 				<header class="budgetHeader">
 					<div class="hamburger">
-						<img src="../images/icons/svg/hamburger.svg" style="width: 40px; height: 40px">
+						<button onclick="showMenu(true)">
+                            <img src="../images/icons/svg/hamburger.svg" style="width: 40px; height: 40px">
+                        </button>
 					</div>
 					<div class="headerElements">
 						<div class="monthDiv">

@@ -1,7 +1,18 @@
+@media screen and (min-width: 320px) {
+
+    .mainMenuContainer {
+        width: 300px;
+        position: fixed;
+        left: -95%;
+    }
+}
+
 /*** Tablet ***/
 @media screen and (min-width: 568px) {
 
     /* Budget */
+
+
 
     .budgetTable .budDesc {
         top: 85px;
@@ -225,8 +236,15 @@
     }
 
     /* Menu */
+
     .mainMenuContainer {
-        display: flex;
+        left: 0;
+        position: static;
+        box-shadow: none;
+    }
+
+    .mainMenuContainer .closeSign {
+        display: none;
     }
 
     .mainMenuContainer, .budgetTableSection {

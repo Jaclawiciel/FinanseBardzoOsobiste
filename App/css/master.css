@@ -384,6 +384,7 @@ span.formErrorMsg.ok {
     width: 100%;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 .budgetTable .budDesc {
@@ -393,6 +394,7 @@ span.formErrorMsg.ok {
     width: 100%;
     display: grid;
     grid-template-columns: 40% 60%;
+    z-index: 1;
 }
 
 .budDesc .budDescName {
@@ -503,7 +505,6 @@ table.budgetTable {
     border-collapse: collapse;
 }
 
-
 /*.budDescName*/ .budGroupName, .budCatName, .budSumName {
     text-align: left;
     width: 40%;
@@ -611,25 +612,46 @@ table.budgetTable {
 .mainMenuContainer {
     background-color: var(--orange);
     color: #fff;
+    display: flex;
     flex-flow: column;
     justify-content: space-between;
     min-height: 100vh;
-}
-
-.mainMenuContainer {
-    display: none;
+    width: 90%;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: -95%;
+    bottom: 0;
+    transition: left 0.5s ease-in-out;
+    box-shadow: 0px 0px 10px 5px #888888;
 }
 
 /* Main menu */
 
-.mainMenu {
+.hamburger button {
+    background: none;
+    border: none;
+}
+
+.mainMenu .closeSign {
+    background: none;
+    border: none;
 }
 
 /* Menu logo */
 
 .menuLogo {
-    width: 50%;
+    width: 100%;
     margin: 10px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menuLogo .logo {
+    width: 100px;
+    height: 60px;
 }
 
 /* Menu buttons */
@@ -932,7 +954,7 @@ table.transactionsTable {
 
 /*** SETTINGS ***/
 
-#blurDiv {
+#blurDiv, #blurDiv2 {
     transition: filter 0.7s;
 }
 
