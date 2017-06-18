@@ -109,6 +109,7 @@
 						</tr>
 						</thead>
 						<tbody>
+<!--                        --><?php //include "../php/loadBudget.php"; ?>
 						<tr class="budGroup">
 							<td class="budGroupName">Najważniejsze po... <img src="../images/icons/svg/plus.svg"
 							                                                  alt="Dodaj nową kategorię"
