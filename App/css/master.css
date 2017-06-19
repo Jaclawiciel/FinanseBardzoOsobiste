@@ -323,11 +323,16 @@ span.formErrorMsg.ok {
     }
 }
 
-.dbError {
+.dbMsg {
     color: var(--red);
     text-align: center;
-    font-weight: 300;
-    animation: disappear 1s ease-out 1s infinite;
+    font-weight: 400;
+    /*animation: disappear 1s ease-out 1s 10;*/
+}
+
+.dbMsg.ok {
+    color: var(--green);
+    font-size: 20px;
 }
 
 /*** INTRODCTION ***/
@@ -612,7 +617,7 @@ table.budgetTable {
 .mainMenuContainer {
     background-color: var(--orange);
     color: #fff;
-    display: flex;
+    /*display: flex;*/
     flex-flow: column;
     justify-content: space-between;
     min-height: 100vh;
@@ -720,6 +725,142 @@ table.budgetTable {
 .reportsButton:hover {
     background-image: url("../images/icons/svg/reports-orange.svg");
 }
+
+/* Add account */
+
+.addAccount {
+    display: inline-block;
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+
+
+.addAccount:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.mainMenuContainer .addAccount .addAccountButton {
+    background: no-repeat left;
+    background-size: 20px;
+    background-position: 10px;
+    background-image: url("../images/icons/svg/plus.svg");
+
+    padding-left: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    color: #fff;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* Add account modal view */
+
+.newAccountModal {
+    width: 100%;
+    margin-bottom: 40px;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: -700px;
+    transition: top 0.4s;
+    box-shadow: 0px 0px 10px 5px #888888;
+    background-color: rgba(200, 200, 203, 0.5);
+    overflow-x: hidden;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalHeader .modalTitle,
+.modalHeader .closeSign {
+    margin-left: 15px;
+    margin-right: 15px;
+    background: none;
+}
+
+.modalHeader .modalTitle {
+    font-weight: 600;
+    font-size: 26px;
+    text-align: left;
+}
+
+.modalHeader .closeSign {
+    display: block;
+}
+
+.modalHeader button {
+    background-color: #fff;
+    border: none;
+}
+
+.newAccountModal .formDiv {
+    padding-top: 20px;
+    border: 1px solid var(--orange);
+    background-color: #fff;
+}
+
+.radioForm {
+    width: 300px;
+}
+
+.radioTitle {
+    display: block;
+}
+
+.radioInputs {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--lightGrey);
+    padding: 10px;
+}
+
+.radioInput {
+    display: flex;
+}
+
+.radioInput input {
+    margin-right: 5px;
+}
+
+.radioInput span {
+    width: 100px;
+}
+
+.newAccountModal h4 {
+    align-self: flex-start;
+    margin: 10px 10px;
+    padding: 0;
+}
+
+.newAccountModal p {
+    margin: 5px 10px;
+}
+
+.newAccountModal .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.newAccoutnModal .buttonDiv {
+    margin: 10px 10px;
+}
+
+.newAccountModal .buttons .button {
+    padding: 8px 35px;
+}
+
+
 
 /* Menu accounts */
 

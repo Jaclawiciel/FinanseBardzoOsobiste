@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="../css/responsive.css">
 		<title>FBO | Budżet</title>
 		<script>
+
+
             function showModalSettings() {
                 document
                     .getElementById("settingsOn")
@@ -28,6 +30,7 @@
                     .style
                     .cssText = "top:-500px";
             }
+
             function showMenu(state) {
                 var body = document.getElementsByTagName("body")[0];
                 var menuContainer = document.getElementsByClassName('mainMenuContainer')[0];
@@ -41,7 +44,26 @@
                     body.style.cssText = "overflow: auto; position: static"
                 }
             }
+            function showModalAccounts(state) {
+                var body = document.getElementsByTagName("body")[0];
+                var modal = document.getElementsByClassName('newAccountModal')[0];
+                var blured =  document.getElementById('blurDiv');
+                if (state) {
+                    blured.style.cssText = "filter:blur(15px)";
+                    modal.style.cssText = "top: 0; overflow-y: auto; height:100%";
+                    body.style.cssText = "overflow: hidden; position: fixed";
+                } else {
+                    blured.style.cssText = "filter:none";
+                    modal.style.cssText = "top: -700px";
+                    body.style.cssText = "overflow: auto; position: static";
+                    document.getElementById('newAccMsg').innerHTML = "";
+                    document.getElementById('newAccountForm').reset();
+                    document.getElementById('newAccSubmitButton').disabled = true;
+                }
+            }
 		</script>
+        <script src="../js/newAccountValidation.js"></script>
+        <script src="../js/manipulateAccount.js"></script>
 	</head>
 	<body>
 		<div class="budgetGrid" id="blurDiv">
@@ -92,6 +114,11 @@
 							</div>
 						</div>
 					</div>
+                    <div>
+                        <span class="addAccount">
+                            <button class="addAccountButton" onclick="showModalAccounts(true)">Dodaj konto</button>
+                        </span>
+                    </div>
 				</div>
 				<button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
 				                                                                  style="width: 60px"></button>
@@ -275,5 +302,45 @@
 				</div>
 			</form>
 		</aside>
+        <aside class="newAccountModal" id="newAccountModal">
+            <header class="modalHeader">
+                <h1 class="modalTitle">Dodaj nowe konto</h1>
+                <button class="closeSign" onclick="showModalAccounts(false)"><img
+                            src="../images/icons/svg/close-orange.svg" alt="Close" style="width: 40px">
+                </button>
+            </header>
+            <h3 class="dbMsg ok" id="newAccMsg"></h3>
+            <form class="formDiv" id="newAccountForm" action="" method="POST">
+                <div class="formElement" id="accountNameElement">
+                    <span>Nazwa konta</span>
+                    <input id="newAccountNameValue" type="text" name="accountName" maxlength="50" title="Podaj nazwę nowego konta" onfocusout="validate('accountNameElement')">
+                    <span class="formErrorMsg ok"><?php echo $accountNameErr;?></span>
+                </div>
+                <div class="formElement radioForm" id="accountTypeElement">
+                    <span class="radioTitle">Typ konta</span>
+                    <div class="radioInputs">
+                        <div class="radioInput">
+                            <input id="type1" class="" type="radio" name="type" value="budget" checked="checked"><span>Konto budżetowe</span>
+                        </div>
+                        <div class="radioInput">
+                            <input id="type2" class="" type="radio" name="type" value="savings"><span>Konto oszczędnościowe</span>
+                        </div>
+                    </div>
+                </div>
+                <h4>Różnica w typach konta</h4>
+                <p>Środki zgromadzone na koncie budżetowym to środki, z których budujesz swój budżet. Np. gotówka w portfelu, konto połączone z Twoją kartą, konto oszczędnościowe, na którym masz zgromadzony fundusz bezpieczeństwa. </p>
+                <p>Środki zgromadzone na koncie oszczędnościowym nie wpływają na stan budżetu. Wybierz ten typ jeśli chcesz tylko śledzic stan środków zgromadzonych na koncie.</p>
+                <div class="buttons">
+                    <div class="buttonDiv">
+                        <input id="newAccSubmitButton" class="button"
+                               onclick="addNewAccount()"
+                               type="button" value="Dodaj" style="cursor:pointer" disabled>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="button grey" type="reset" onclick="showModalAccounts(false)" style="cursor:pointer">Anuluj</button>
+                    </div>
+                </div>
+            </form>
+        </aside>
 	</body>
 </html>

@@ -77,7 +77,6 @@
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                        window.console.log("TUTAj");
                         msgDisplay.innerHTML = this.responseText;
                         msgDisplay.style.cssText = "display: block; opacity: 0";
                         if (this.responseText == "OK") {
@@ -103,7 +102,7 @@
 		<main>
 			<section class="signSection">
 				<h1 class="signTitle hideTitle">Logowanie użytkownika</h1>
-                <h3 class="dbError" id="dbError"></h3>
+                <h3 class="dbMsg" id="dbError"></h3>
 				<form class="formDiv" action="" method="GET">
 					<div class="formElement" id="mailElement">
 						<span>Adres e-mail</span>
