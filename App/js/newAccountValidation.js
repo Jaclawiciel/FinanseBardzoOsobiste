@@ -26,7 +26,7 @@ function empty(value) {
 
 function accountNameValidation(value) {
     "use strict";
-    var pattern = /^^[a-zA-Z0-9 ()_-]+$/;
+    var pattern = /^^[a-zA-Z0-9 ()_-óÓąĄśŚłŁżŻźŹćĆńŃ]+$/;
     return !pattern.test(value);
 }
 

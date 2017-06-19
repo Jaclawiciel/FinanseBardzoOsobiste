@@ -54,7 +54,7 @@
                     body.style.cssText = "overflow: hidden; position: fixed";
                 } else {
                     blured.style.cssText = "filter:none";
-                    modal.style.cssText = "top: -700px";
+                    modal.style.cssText = "top: -750px";
                     body.style.cssText = "overflow: auto; position: static";
                     document.getElementById('newAccMsg').innerHTML = "";
                     document.getElementById('newAccountForm').reset();
@@ -64,6 +64,7 @@
 		</script>
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/manipulateAccount.js"></script>
+        <script>window.onload = displayAccounts;</script>
 	</head>
 	<body>
 		<div class="budgetGrid" id="blurDiv">
@@ -76,43 +77,12 @@
                         </button>
 					</div>
 					<div class="menuButtons">
-						<a href="budget.html" class="menuButton budgetButton activeMenu">Budżet</a>
+						<a href="budget.php" class="menuButton budgetButton activeMenu">Budżet</a>
 						<a href="transactions.html" class="menuButton transactionsButton">Transakcje</a>
 						<a href="reports.html" class="menuButton reportsButton">Raporty</a>
 					</div>
-					<div class="menuAccounts">
-						<div class="accounts">
-							<div class="accountsDesc">
-								<span class="accountDescName">Budżet</span>
-								<span class="accountDescSum">4 850,00 zł</span>
-							</div>
-							<div class="account">
-								<span class="accountName">Gotówka</span>
-								<span class="accountAmount">200,00 zł</span>
-							</div>
-							<div class="account">
-								<span class="accountName">Konto bieżące</span>
-								<span class="accountAmount">1 200,00 zł</span>
-							</div>
-							<div class="account">
-								<span class="accountName">Konto oszczędnościowe</span>
-								<span class="accountAmount">3 450,00 zł</span>
-							</div>
-						</div>
-						<div class="accounts">
-							<div class="accountsDesc">
-								<span class="accountDescName">Oszczędności</span>
-								<span class="accountDescSum">8 430,00 zł</span>
-							</div>
-							<div class="account">
-								<span class="accountName">Lokata</span>
-								<span class="accountAmount">3 000,00 zł</span>
-							</div>
-							<div class="account">
-								<span class="accountName">Fundusze inwestycyjne</span>
-								<span class="accountAmount">5 430,00 zł</span>
-							</div>
-						</div>
+					<div class="menuAccounts" id="menuAccounts">
+<!--                        Place for accounts in menu container -->
 					</div>
                     <div>
                         <span class="addAccount">

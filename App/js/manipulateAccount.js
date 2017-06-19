@@ -25,4 +25,17 @@ function addNewAccount() {
     xhttp.open("POST", "../php/manipulateAccount.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&type=" + type);
+    setTimeout(displayAccounts(), 500);
+    displayAccounts();
+}
+
+function displayAccounts() {
+    "use strict";
+    var accountsDiv = document.getElementById('menuAccounts');
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        accountsDiv.innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../php/manipulateAccount.php", true);
+    xhttp.send();
 }

@@ -23,7 +23,7 @@ function empty(value) {
 
 function firstNameValidation(value) {
     "use strict";
-    var pattern = /^(([a-zA-z]+) ?([a-zA-Z]+))+$/;
+    var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ]+))+$/;
     return !pattern.test(value);
 }
 
