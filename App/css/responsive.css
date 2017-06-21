@@ -253,12 +253,16 @@
         display: none;
     }
 
-    .mainMenuContainer, .budgetTableSection {
+    .budgetTableSection {
         max-height: 100vh;
     }
 
-    .budgetTableSection {
+    .budgetTableSection, .mainMenuContainer {
         overflow-y: auto;
+    }
+
+    body {
+        max-height: 100vh;
     }
 }
 

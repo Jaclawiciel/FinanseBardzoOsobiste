@@ -327,7 +327,7 @@ span.formErrorMsg.ok {
     color: var(--red);
     text-align: center;
     font-weight: 400;
-    /*animation: disappear 1s ease-out 1s 10;*/
+    animation: disappear 1s ease-out 1s infinite;
 }
 
 .dbMsg.ok {
@@ -633,12 +633,7 @@ table.budgetTable {
 
 /* Main menu */
 
-.hamburger button {
-    background: none;
-    border: none;
-}
-
-.mainMenu .closeSign {
+.mainMenu .closeSign, .hamburger button {
     background: none;
     border: none;
 }
@@ -859,6 +854,24 @@ table.budgetTable {
 .newAccountModal .buttons .button {
     padding: 8px 35px;
 }
+
+/* Delete account */
+
+.accountNameDiv {
+    padding: 5px;
+}
+
+.deleteAccountButton {
+    border: none;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    background-image: url("../images/icons/svg/delete-white.svg");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
 
 
 

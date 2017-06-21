@@ -7,6 +7,16 @@
  */
 
 session_start();
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "^79q+a8&}u9/4Un";
+$dbname = "fbo";
+
+$connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
+// seth the PDO error mode to exception
+$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 $userID = $_SESSION['userID'];
 
 function test_input($data) {
@@ -16,6 +26,15 @@ function test_input($data) {
     return $data;
 }
 
+function quoter($data)
+{
+    $data = "'" . $data . "'";
+    return $data;
+}
+
+
+
+/****** GET REQUEST ******/
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     class Account {
         public $accID;
@@ -32,8 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
         public function draw() {
             return
-                "<div class='account' id='$this->accID'>
-					<span class='accountName'>" . $this->name . "</span>
+                "<div class='account' id='accountID' . '$this->accID'>
+                    <div class='accountNameDiv'>
+                        <span class='accountName'>" . $this->name . "</span>
+					    <button class='deleteAccountButton' onclick='deleteAccount($this->accID)'></button>
+					</div>
 					<span class='accountAmount'>" . $this->balance . " zł</span>
 				</div>";
         }
@@ -61,21 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
     }
 
-    $dbServername = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "^79q+a8&}u9/4Un";
-    $dbname = "fbo";
-
-
-
     try {
         $budgetSum = 0.00;
         $savingsSum = 0.00;
         $budgetAccountsStr = "";
         $savingAccountsStr = "";
-        $connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
-        // seth the PDO error mode to exception
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT AccountID, Name, Balance, Type FROM Accounts WHERE Type = 'budget' AND UserID = $userID";
         foreach ($connection->query($sql) as $row) {
@@ -99,10 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $connection = null;
-}
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    /****** POST REQUEST ******/
+} elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
     $dataValid = true;
     $accName = $accType = "";
 
@@ -121,29 +133,33 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     if ($dataValid) {
-        $dbServername = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "^79q+a8&}u9/4Un";
-        $dbname = "fbo";
-
-        function quoter($data) {
-            $data = "'" . $data . "'";
-            return $data;
-        }
 
         $quotedName = quoter($accName);
         $quotedType = quoter($accType);
 
         try {
-            $connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
-            // seth the PDO error mode to exception
-            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "INSERT INTO Accounts (UserID, Name, Type) VALUES ($userID, $quotedName, $quotedType)";
             $connection->exec($sql);
             echo "Konto utworzone";
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
-        $connection = null;
+    }
+
+
+
+
+    /****** DELETE REQUEST ******/
+} elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    parse_str(file_get_contents("php://input"),$delete_vars);
+    $accountID = $delete_vars['accountID'];
+    try {
+        $sql = "DELETE FROM Accounts WHERE AccountID = $accountID";
+        $connection->exec($sql);
+
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
     }
 }
+
+$connection = null;

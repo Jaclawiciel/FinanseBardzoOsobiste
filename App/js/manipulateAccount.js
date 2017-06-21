@@ -25,8 +25,7 @@ function addNewAccount() {
     xhttp.open("POST", "../php/manipulateAccount.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&type=" + type);
-    setTimeout(displayAccounts(), 500);
-    displayAccounts();
+    setTimeout(function(){ displayAccounts(); }, 1000);
 }
 
 function displayAccounts() {
@@ -34,8 +33,25 @@ function displayAccounts() {
     var accountsDiv = document.getElementById('menuAccounts');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        accountsDiv.innerHTML = this.responseText;
+        if (this.readyState == 4 && this.status == 200) {
+            accountsDiv.innerHTML = this.responseText;
+        }
     };
     xhttp.open("GET", "../php/manipulateAccount.php", true);
     xhttp.send();
+}
+
+function deleteAccount(accountID) {
+    "use strict";
+    window.console.log(accountID);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
+        }
+    };
+    xhttp.open("DELETE", "../php/manipulateAccount.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("accountID=" + accountID);
+    setTimeout(function(){ displayAccounts(); }, 500);
 }
