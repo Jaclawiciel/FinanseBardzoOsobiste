@@ -63,6 +63,7 @@
             }
 		</script>
         <script src="../js/newAccountValidation.js"></script>
+        <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
         <script>window.onload = displayAccounts;</script>
 	</head>

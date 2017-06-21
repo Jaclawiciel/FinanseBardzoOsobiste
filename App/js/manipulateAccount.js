@@ -53,5 +53,7 @@ function deleteAccount(accountID) {
     xhttp.open("DELETE", "../php/manipulateAccount.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("accountID=" + accountID);
-    setTimeout(function(){ displayAccounts(); }, 500);
+    var sheet = window.document.styleSheets[1];
+    sheet.insertRule('#accountID' + accountID + ' { animation: slideLeft 0.3s ease 0s 1; }', sheet.cssRules.length);
+    setTimeout(function(){ displayAccounts(); }, 300);
 }

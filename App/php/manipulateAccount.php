@@ -51,13 +51,25 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
         public function draw() {
             return
-                "<div class='account' id='accountID' . '$this->accID'>
-                    <div class='accountNameDiv'>
-                        <span class='accountName'>" . $this->name . "</span>
-					    <button class='deleteAccountButton' onclick='deleteAccount($this->accID)'></button>
-					</div>
-					<span class='accountAmount'>" . $this->balance . " zł</span>
-				</div>";
+                "<div class='accountDiv' id='accountID" . $this->accID . "'>
+                    <div class='account'>
+                        <div class='accountNameDiv'>
+                            <span class='accountName'>" . $this->name . "</span>
+					        <button class='deleteAccountButton' onclick='showDeleteConfirm(true," . $this->accID . ")'></button>
+					    </div>
+					    <span class='accountAmount'>" . $this->balance . " zł</span>
+				    </div>
+				    <div class='delConfirmationDiv' id='delConfirmationDiv" . $this->accID . "'>
+				        <span>Czy na pewno chcesz usunąc konto?</span>
+				        <div>
+				            <button class='button' onclick='deleteAccount($this->accID)'>Tak</button><button class='button' onclick='showDeleteConfirm(false," . $this->accID . ")'>Nie</button>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                 </div>
+				";
         }
     }
 

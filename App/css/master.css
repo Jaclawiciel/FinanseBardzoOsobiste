@@ -870,9 +870,40 @@ table.budgetTable {
     background-size: 20px;
     background-repeat: no-repeat;
     color: #fff;
+    cursor: pointer;
 }
 
+.delConfirmationDiv {
+    text-align: center;
+    display: none;
+    position: relative;
 
+}
+
+@keyframes slideRight {
+    0% { left: -80px; opacity: 0; }
+    25% { left: -60px; opacity: 0.25;}
+    50% {  left: -40px; opacity: 0.5; }
+    75% {  left: -20px; opacity: 0.75; }
+    100% {  left: 0; opacity: 1; }
+}
+
+@keyframes slideLeft {
+    0% { left: 0px; opacity: 1; }
+    25% { left: -20px; opacity: 0.75;}
+    50% {  left: -40px; opacity: 0.5; }
+    75% {  left: -60px; opacity: 0.25; }
+    100% {  left: -80px; opacity: 0; }
+}
+
+.delConfirmationDiv div {
+    display: flex;
+    justify-content: center;
+}
+
+.accountDiv {
+    position: relative;
+}
 
 
 /* Menu accounts */
