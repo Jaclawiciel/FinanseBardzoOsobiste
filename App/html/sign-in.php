@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php include '../php/isSignedInOnLogin.php'; ?>
+<?php include '../php/isSignedIn.php'; ?>
 
 <!doctype html>
 <html lang="pl">

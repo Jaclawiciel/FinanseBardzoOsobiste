@@ -264,6 +264,17 @@
     body {
         max-height: 100vh;
     }
+
+    /*** TRANSACTIONS PAGE ***/
+
+    .transactionsHeader {
+        width: calc(100% - 300px);
+        left: 300px;
+    }
+
+    .transactionsSection {
+        margin-top: 57px;
+    }
 }
 
 @media screen and (min-width: 1440px) {

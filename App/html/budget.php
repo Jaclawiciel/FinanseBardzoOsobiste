@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require '../php/isSignedInOnLogin.php'; ?>
+<?php require '../php/isSignedIn.php'; ?>
 <!doctype html>
 <html lang="pl">
 	<head>
@@ -11,57 +11,10 @@
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/responsive.css">
 		<title>FBO | Budżet</title>
-		<script>
-
-
-            function showModalSettings() {
-                document
-                    .getElementById("settingsOn")
-                    .style
-                    .cssText = "top:0px";
-
-                document.getElementById("blurDiv").style.cssText = "filter:blur(15px)";
-                window.scrollTo(0, 0);
-            }
-            function hideModalSettings() {
-                document.getElementById("blurDiv").style.cssText = "filter:none";
-                document
-                    .getElementById("settingsOn")
-                    .style
-                    .cssText = "top:-500px";
-            }
-
-            function showMenu(state) {
-                var body = document.getElementsByTagName("body")[0];
-                var menuContainer = document.getElementsByClassName('mainMenuContainer')[0];
-                if (state) {
-                    document.getElementById("blurDiv2").style.cssText = "filter:blur(15px)";
-                    menuContainer.style.cssText = "left: 0; overflow-y: scroll";
-                    body.style.cssText = "overflow: hidden; position: fixed";
-                } else {
-                    document.getElementById("blurDiv2").style.cssText = "filter:none";
-                    menuContainer.style.cssText = "left: -95%;";
-                    body.style.cssText = "overflow: auto; position: static"
-                }
-            }
-            function showModalAccounts(state) {
-                var body = document.getElementsByTagName("body")[0];
-                var modal = document.getElementsByClassName('newAccountModal')[0];
-                var blured =  document.getElementById('blurDiv');
-                if (state) {
-                    blured.style.cssText = "filter:blur(15px)";
-                    modal.style.cssText = "top: 0; overflow-y: auto; height:100%";
-                    body.style.cssText = "overflow: hidden; position: fixed";
-                } else {
-                    blured.style.cssText = "filter:none";
-                    modal.style.cssText = "top: -750px";
-                    body.style.cssText = "overflow: auto; position: static";
-                    document.getElementById('newAccMsg').innerHTML = "";
-                    document.getElementById('newAccountForm').reset();
-                    document.getElementById('newAccSubmitButton').disabled = true;
-                }
-            }
-		</script>
+        <script src="../js/blockTransactionsButton.js"></script>
+        <script src="../js/showSettings.js"></script>
+        <script src="../js/showModalAccounts.js"></script>
+        <script src="../js/showMenu.js"></script>
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
@@ -79,8 +32,8 @@
 					</div>
 					<div class="menuButtons">
 						<a href="budget.php" class="menuButton budgetButton activeMenu">Budżet</a>
-						<a href="transactions.html" class="menuButton transactionsButton">Transakcje</a>
-						<a href="reports.html" class="menuButton reportsButton">Raporty</a>
+						<a href="transactions.php" id="tranButton" class="menuButton transactionsButton">Transakcje</a>
+						<a href="reports.html" class="menuButton reportsButton inactiveMenu">Raporty</a>
 					</div>
 					<div class="menuAccounts" id="menuAccounts">
 <!--                        Place for accounts in menu container -->
