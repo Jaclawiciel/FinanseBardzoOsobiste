@@ -65,9 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 				            <button class='button' onclick='deleteAccount($this->accID)'>Tak</button><button class='button' onclick='showDeleteConfirm(false," . $this->accID . ")'>Nie</button>
                         </div>
                     </div>
-                    <div>
-                        
-                    </div>
                  </div>
 				";
         }
