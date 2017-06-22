@@ -993,10 +993,6 @@ table.budgetTable {
     padding: 10px 15px 10px 10px;
 }
 
-.transactionsHeader .hamburger {
-    width: 50px;
-}
-
 .transactionsHeadElements {
     width: auto;
     display: flex;

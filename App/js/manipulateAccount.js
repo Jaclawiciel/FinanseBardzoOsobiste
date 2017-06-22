@@ -30,17 +30,19 @@ function addNewAccount() {
 
 function displayAccounts() {
     "use strict";
+    window.console.log("tutaj");
     var accountsDiv = document.getElementById('menuAccounts');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             accountsDiv.innerHTML = this.responseText;
+
         }
     };
     xhttp.open("GET", "../php/manipulateAccount.php", true);
     xhttp.send();
 
-    setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
+    // setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
 }
 
 function deleteAccount(accountID) {
