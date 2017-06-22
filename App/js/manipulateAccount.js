@@ -42,7 +42,7 @@ function displayAccounts() {
     xhttp.open("GET", "../php/manipulateAccount.php", true);
     xhttp.send();
 
-    // setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
+    setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
 }
 
 function deleteAccount(accountID) {
