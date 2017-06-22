@@ -18,6 +18,7 @@
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
+        <script src="../js/accountClickTranRedirect.js"></script>
 	</head>
 	<body>
 		<div class="transactionsGrid" id="blurDiv">
@@ -47,31 +48,9 @@
                                                                                            style="width: 60px"></button>
             </nav>
 			<main class="transactionsMain" id="blurDiv2">
-				<header class="transactionsHeader">
-                    <div class="hamburger">
-                        <button onclick="showMenu(true)">
-                            <img src="../images/icons/svg/hamburger.svg" style="width: 40px; height: 40px">
-                        </button>
-                    </div>
-					<div class="transHeadAccountName">
-						Gotówka
-					</div>
-					<div class="transHeadAccountBalances">
-						<div class="col accepted">
-							<span class="desc">Zaakceptowane</span>
-							<span class="balance">250,00 zł</span>
-						</div>
-						<span class="col symbol">+</span>
-						<div class="col waiting">
-							<span class="desc">Oczekujące</span>
-							<span class="balance">- 50,00 zł</span>
-						</div>
-						<span class="col symbol">=</span>
-						<div class="col balance">
-							<span class="desc">Stan konta</span>
-							<span class="balance">200,00 zł</span>
-						</div>
-					</div>
+				<header class="transactionsHeader" id="transactionsHeader">
+<!--                    Place for transaction header-->
+                    <?php include '../php/displayTransactionsHeader.php'; ?>
 				</header>
 				<section class="transactionsSection">
 					<header class="tableEditor">

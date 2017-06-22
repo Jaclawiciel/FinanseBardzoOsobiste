@@ -18,6 +18,7 @@
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
+        <script src="../js/accountClickTranRedirect.js"></script>
 	</head>
 	<body>
 		<div class="budgetGrid" id="blurDiv">

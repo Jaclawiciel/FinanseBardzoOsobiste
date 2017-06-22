@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "<div class='accountDiv' id='accountID" . $this->accID . "'>
                     <div class='account'>
                         <div class='accountNameDiv'>
-                            <span class='accountName'>" . $this->name . "</span>
+                            <span onclick='redirectToAccount(" . $this->accID . ")' class='accountName'>" . $this->name . "</span>
 					        <button class='deleteAccountButton' onclick='showDeleteConfirm(true," . $this->accID . ")'></button>
 					    </div>
 					    <span class='accountAmount'>" . $this->balance . " zł</span>

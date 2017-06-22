@@ -30,7 +30,6 @@ function addNewAccount() {
 
 function displayAccounts() {
     "use strict";
-    window.console.log("tutaj");
     var accountsDiv = document.getElementById('menuAccounts');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
