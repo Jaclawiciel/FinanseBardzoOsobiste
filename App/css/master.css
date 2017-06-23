@@ -923,6 +923,7 @@ table.budgetTable {
 
 .menuAccounts {
     margin-top: 40px;
+
 }
 
 .accountsDesc {
@@ -945,12 +946,18 @@ table.budgetTable {
     margin-top: 30px;
     font-size: 15px;
     font-weight: 300;
+
 }
 
 .account {
     padding-left: 20px;
     padding-right: 12px;
     margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.accountAmount {
+    align-self: center;
 }
 
 .accountsDesc, .account {
@@ -1035,14 +1042,23 @@ table.budgetTable {
 }
 
 .transactionsHeader .col:nth-child(-n + 4) {
-    display: none;
+    /*display: none;*/
+}
+
+.tranDesc {
+    position: fixed;
+    margin: 0;
 }
 
 /* Menu */
 
-.mainMenu .account.active,
+.mainMenu .accountDiv.active,
 .mainMenu .account:hover {
     background-color: rgba(255, 255, 255, 0.4);
+}
+
+.accountNameDiv span {
+    cursor: pointer;
 }
 
 /* Transactions table editor */
@@ -1097,7 +1113,7 @@ table.transactionsTable {
 .tranDate {
     width: 10%;
     padding-left: 5px;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .tranDate.tranElem {
@@ -1122,15 +1138,11 @@ table.transactionsTable {
 .tranCost {
     text-align: right;
     width: 30%;
+    padding-right: 5px;
 }
 
 .tranCost.tranElem {
     font-weight: 600;
-}
-
-.tranAccept {
-    text-align: center;
-    width: 15%;
 }
 
 .tranAccept.not {
@@ -1150,7 +1162,7 @@ table.transactionsTable {
 
 /*** SETTINGS ***/
 
-#blurDiv, #blurDiv2 {
+#blurDiv, #transactionsMain {
     transition: filter 0.7s;
 }
 

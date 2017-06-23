@@ -18,7 +18,8 @@
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
-        <script src="../js/accountClickTranRedirect.js"></script>
+        <script src="../js/manipulateTransactions.js"></script>
+        <script src="../js/highlightChoosenAccount.js"></script>
 	</head>
 	<body>
 		<div class="transactionsGrid" id="blurDiv">
@@ -47,11 +48,8 @@
                 <button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
                                                                                            style="width: 60px"></button>
             </nav>
-			<main class="transactionsMain" id="blurDiv2">
-				<header class="transactionsHeader" id="transactionsHeader">
-<!--                    Place for transaction header-->
-                    <?php include '../php/displayTransactionsHeader.php'; ?>
-				</header>
+			<main class="transactionsMain" id="transactionsMain">
+                <?php include "../php/manipulateTransactions.php"; ?>
 				<section class="transactionsSection">
 					<header class="tableEditor">
 						<a href="" id="addTransaction">
@@ -73,206 +71,9 @@
 							<th class="tranDescElem tranName">Nazwa transakcji</th>
 							<th class="tranDescElem tranCat">Kategoria</th>
 							<th class="tranDescElem tranCost">Kwota transakcji</th>
-							<th class="tranDescElem tranAccept">Akceptacja</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr class="transactionRow">
-							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-							</td>
-							<td class="tranElem tranDate">12.05.17</td>
-							<td class="small">
-								<span class="tranElem tranName">Tesco</span>
-								<span class="tranElem tranCat">Jedzenie i picie</span>
-							</td>
-							<td class="tranElem tranName hid">Tesco</td>
-							<td class="tranElem tranCat hid">Jedzenie i picie</td>
-							<td class="tranElem tranCost">-150,00 zł</td>
-							<td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-							                                     alt="Akceptacja" style="width: 25px"></td>
-						</tr>
-						<tr class="transactionRow">
-							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran2">
-							</td>
-							<td class="tranElem tranDate">13.05.17</td>
-							<td class="small">
-								<span class="tranElem tranName">Rossmann</span>
-								<span class="tranElem tranCat">Kosmetyki</span>
-							</td>
-							<td class="tranElem tranName hid">Rossmann</td>
-							<td class="tranElem tranCat hid">Kosmetyki</td>
-							<td class="tranElem tranCost">-100,00 zł</td>
-							<td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-							                                     alt="Akceptacja" style="width: 25px"></td>
-						</tr>
-						<tr class="transactionRow">
-							<td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran3">
-							</td>
-							<td class="tranElem tranDate">14.05.17</td>
-							<td class="small">
-								<span class="tranElem tranName">Rachunek za internet</span>
-								<span class="tranElem tranCat">Jedzenie i picie</span>
-							</td>
-							<td class="tranElem tranName hid">Rachunek za internet</td>
-							<td class="tranElem tranCat hid">Telefon, internet</td>
-							<td class="tranElem tranCost">-50,00 zł</td>
-							<td class="tranElem tranAccept not"><img src="../images/icons/svg/accept-orange.svg"
-							                                     alt="Akceptacja" style="width: 25px"></td>
-						</tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
-                        <tr class="transactionRow">
-                            <td class="tranElem tranCheck hid"><input type="checkbox" name="checkTran1" id="checkTran1">
-                            </td>
-                            <td class="tranElem tranDate">12.05.17</td>
-                            <td class="small">
-                                <span class="tranElem tranName">Tesco</span>
-                                <span class="tranElem tranCat">Jedzenie i picie</span>
-                            </td>
-                            <td class="tranElem tranName hid">Tesco</td>
-                            <td class="tranElem tranCat hid">Jedzenie i picie</td>
-                            <td class="tranElem tranCost">-150,00 zł</td>
-                            <td class="tranElem tranAccept"><img src="../images/icons/svg/accept-orange.svg"
-                                                                 alt="Akceptacja" style="width: 25px"></td>
-                        </tr>
 						</tbody>
 					</table>
 				</section>
@@ -358,6 +159,12 @@
                 </div>
             </form>
         </aside>
-        <script>window.onload = displayAccounts;</script>
+        <script>
+            function startOnLoad() {
+                displayAccounts();
+//                displayTransactions(null);
+            }
+        </script>
+        <script>window.onload = startOnLoad();</script>
 	</body>
 </html>

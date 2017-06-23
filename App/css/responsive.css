@@ -61,6 +61,10 @@
         display: block;
     }
 
+    .transactionsTable {
+        margin-top: calc(69px + 37px + 21px);
+    }
+
     /* Transactions table */
     .transactionRow .small {
         display: none;
@@ -71,14 +75,18 @@
     }
 
     .tranDesc {
-        display: table-row;
+        display: grid;
+        grid-template-columns: 25px 100px auto 25% 150px;
+        width: 100%;
+        align-items: flex-end;
+        top: calc(69px + 37px);
     }
 
     .tranDescElem {
         font-size: 12px;
         opacity: 0.7;
         border-bottom: 1px solid var(--categoryBorder);
-        padding: 5px 0;
+        width: 100%;
     }
 
     .tranDescElem.tranCheck {
@@ -86,9 +94,9 @@
         opacity: 1;
     }
 
-    .transactionsTable .tranCheck {
+    .transactionsTable .transactionRow .tranCheck {
         text-align: center;
-        width: 5%;
+        width: 25px;
     }
 
     .transactionsTable input[type = checkbox] {
@@ -100,20 +108,25 @@
         background-color: var(--orange);
     }
 
-    .tranDate {
-        width: 15%;
+    .transactionRow .tranDate {
+        width: 100px;
     }
 
-    .tranName {
-        width: 30%;
+    .transactionRow .tranName {
+        width: auto;
+        text-align: left;
     }
 
-    .tranCost {
-        width: 20%;
+    .transactionRow .tranCat {
+        width: 25%;
     }
 
-    .tranAccept {
-        width: 10%;
+    .tranCat, .tranName {
+        text-align: left;
+    }
+
+    .transactionRow .tranCost {
+        width: 150px;
     }
 
     /*** SETTINGS ***/
@@ -279,6 +292,15 @@
     .transactionsSection {
         margin-top: 57px;
     }
+
+    .tranDesc {
+        width: calc(100% - 300px);
+        top: calc(57px + 37px);
+    }
+
+    .transactionsTable {
+        margin-top: calc(57px + 37px + 21px);
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -289,10 +311,10 @@
 
     /*** TRANSACTIONS PAGE ***/
     .tranCheck, .tranAccept {
-        width: 5%;
+        /*width: 5px;*/
     }
 
     .tranDate {
-        width: 10%;
+        /*width: 10%;*/
     }
 }

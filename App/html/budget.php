@@ -18,7 +18,7 @@
         <script src="../js/newAccountValidation.js"></script>
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
-        <script src="../js/accountClickTranRedirect.js"></script>
+        <script src="../js/manipulateTransactions.js"></script>
 	</head>
 	<body>
 		<div class="budgetGrid" id="blurDiv">
@@ -47,7 +47,7 @@
 				<button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
 				                                                                  style="width: 60px"></button>
 			</nav>
-			<main class="budgetMain" id="blurDiv2">
+			<main class="budgetMain" id="transactionsMain">
 				<header class="budgetHeader">
 					<div class="hamburger">
 						<button onclick="showMenu(true)">
