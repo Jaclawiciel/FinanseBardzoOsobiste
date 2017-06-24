@@ -183,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $transactionRows .= $transactionRow->draw();
             }
             echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $transactionRows . $sectionEnd;
+            echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
