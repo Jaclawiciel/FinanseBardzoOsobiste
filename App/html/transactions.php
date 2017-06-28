@@ -20,6 +20,7 @@
         <script src="../js/manipulateAccount.js"></script>
         <script src="../js/manipulateTransactions.js"></script>
         <script src="../js/highlightChoosenAccount.js"></script>
+        <script src="../js/addNewTransaction.js"></script>
 	</head>
 	<body>
 		<div class="transactionsGrid" id="blurDiv">
@@ -50,33 +51,6 @@
             </nav>
 			<main class="transactionsMain" id="transactionsMain">
                 <?php include "../php/manipulateTransactions.php"; ?>
-				<section class="transactionsSection">
-					<header class="tableEditor">
-						<a href="" id="addTransaction">
-							<div><img src="../images/icons/svg/plus-orange.svg" alt="Dodaj nową" style="width: 25px">Dodaj
-								transakcję
-							</div>
-						</a>
-						<a id="editTransaction" href=""><img src="../images/icons/svg/edit.svg" style="width: 25px"></a>
-						<a id="deleteTransaction" href=""><img src="../images/icons/svg/delete.svg" style="width: 25px"></a>
-						<div></div>
-						<a>Filtruj</a>
-					</header>
-					<table class="transactionsTable">
-						<thead>
-						<tr class="tranDesc">
-							<th class="tranDescElem tranCheck"><input type="checkbox" name="checkAll"
-							                                          id="checkAllCheckbox"></th>
-							<th class="tranDescElem tranDate">Data transakcji</th>
-							<th class="tranDescElem tranName">Nazwa transakcji</th>
-							<th class="tranDescElem tranCat">Kategoria</th>
-							<th class="tranDescElem tranCost">Kwota transakcji</th>
-						</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</section>
 			</main>
 
 		</div>
@@ -162,7 +136,6 @@
         <script>
             function startOnLoad() {
                 displayAccounts();
-//                displayTransactions(null);
             }
         </script>
         <script>window.onload = startOnLoad();</script>

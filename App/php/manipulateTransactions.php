@@ -112,13 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $transactionsHeader = "";
     $headerEnd = "</header>";
     $sectionStart = "<section class=\"transactionsSection\">
-					<header class=\"tableEditor\">
-						<a href=\"\" id=\"addTransaction\">
-							<div><img src=\"../images/icons/svg/plus-orange.svg\" alt=\"Dodaj nową\" style=\"width: 25px\">Dodaj
-								transakcję
-							</div>
-						</a>
-						<a id=\"editTransaction\" href=\"\"><img src=\"../images/icons/svg/edit.svg\" style=\"width: 25px\"></a>
+					<header class=\"tableEditor\">";
+    $sectionAddButton =
+
+    $sectionMiddle = "<a id=\"editTransaction\" href=\"\"><img src=\"../images/icons/svg/edit.svg\" style=\"width: 25px\"></a>
 						<a id=\"deleteTransaction\" href=\"\"><img src=\"../images/icons/svg/delete.svg\" style=\"width: 25px\"></a>
 						<div></div>
 						<a>Filtruj</a>
@@ -134,7 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 							<th class=\"tranDescElem tranCost\">Kwota transakcji</th>
 						</tr>
 						</thead>
-						<tbody>";
+						<tbody>
+                            <tr id='newTransactionRow' class='transactionRow'></tr>
+                            <tr id='newTransactionRowButtons' class='transactionRow'></tr>";
     $transactionRows = "";
     $sectionEnd = "</tbody></table></section>";
 
@@ -158,7 +157,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
-            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $transactionRows . $sectionEnd;
+            $sectionAddButton = "<button onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
+							<div><img src=' ../images/icons/svg/plus-orange.svg' alt='Dodaj nową' style='width: 25px'>
+							Dodaj transakcję
+							</div>
+						</button>";
+            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $transactionRows . $sectionEnd;
             echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
         }
         catch(PDOException $e) {
@@ -182,7 +186,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
-            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $transactionRows . $sectionEnd;
+            $sectionAddButton = "<button onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
+							<div><img src=' ../images/icons/svg/plus-orange.svg' alt='Dodaj nową' style='width: 25px'>
+							Dodaj transakcję
+							</div>
+						</button>";
+            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $transactionRows . $sectionEnd;
             echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
         }
         catch(PDOException $e) {
