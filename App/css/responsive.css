@@ -274,7 +274,7 @@
         overflow-y: auto;
     }
 
-    body {
+    body.heightLimit {
         max-height: 100vh;
     }
 

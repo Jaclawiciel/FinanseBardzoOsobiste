@@ -20,7 +20,7 @@
         <script src="../js/manipulateAccount.js"></script>
         <script src="../js/manipulateTransactions.js"></script>
 	</head>
-	<body>
+	<body class="heightLimit">
 		<div class="budgetGrid" id="blurDiv">
 			<nav class="mainMenuContainer">
 				<div class="mainMenu">

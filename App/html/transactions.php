@@ -23,7 +23,7 @@
         <script src="../js/addNewTransaction.js"></script>
         <script src="../js/newTransactionValidation.js"></script>
 	</head>
-	<body>
+	<body class="heightLimit">
 		<div class="transactionsGrid" id="blurDiv">
             <nav class="mainMenuContainer">
                 <div class="mainMenu">
