@@ -66,7 +66,7 @@
 							     alt="Następny miesiąc">
 						</div>
 						<div class="toBudgetDiv yellowAmount" id="toBudgetDiv">
-							<span class="toBudgetAmount" id="toBudgetAmount">1 500,00 zł</span>
+							<span class="toBudgetAmount" id="toBudgetAmount">0 zł</span>
 							<span class="toBudgetDesc">Do rozdysponowania</span>
 						</div>
 					</div>
@@ -82,107 +82,7 @@
 						</tr>
 						</thead>
 						<tbody>
-<!--                        --><?php //include "../php/loadBudget.php"; ?>
-						<tr class="budGroup">
-							<td class="budGroupName">Najważniejsze po... <img src="../images/icons/svg/plus.svg"
-							                                                  alt="Dodaj nową kategorię"
-							                                                  style="width: 20px"></td>
-							<td class="budGroupAmount hideable">3 950,00 zł</td>
-							<td class="budGroupAmount hideable">200,00 zł</td>
-							<td class="budGroupAmount">3 750,00 zł</td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Jedzenie i picie</td>
-							<td class="budCatAmount hideable">1 700,00 zł</td>
-							<td class="budCatAmount hideable">200,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">1 500,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Koszty leczenia i leki</td>
-							<td class="budCatAmount hideable">35,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">35,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Ubranie</td>
-							<td class="budCatAmount hideable">500,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">500,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Czynsz za mieszkanie</td>
-							<td class="budCatAmount hideable">460,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">460,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Prąd</td>
-							<td class="budCatAmount hideable">90,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">90,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Koszty dojazdu do pracy</td>
-							<td class="budCatAmount hideable">180,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="yellowAmount">180,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Higiena, kosmetyki, fryzjer</td>
-							<td class="budCatAmount hideable">220,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">220,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Środki czystości</td>
-							<td class="budCatAmount hideable">120,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">120,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Wydatki na szkołe i przedszkole</td>
-							<td class="budCatAmount hideable">550,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">550,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Telefon, internet</td>
-							<td class="budCatAmount hideable">95,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">95,00 zł</span></td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Inne niezbędne potrzeby</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greyAmount">0,00 zł</span></td>
-						</tr>
-						<tr class="budGroup">
-							<td class="budGroupName">Raty składki i podatki <img src="../images/icons/svg/plus.svg"
-							                                                     alt="Dodaj nową kategorię"
-							                                                     style="width: 20px"></td>
-							<td class="budGroupAmount hideable">1 300,00 zł</td>
-							<td class="budGroupAmount hideable">0,00 zł</td>
-							<td class="budGroupAmount">1 300,00 zł</td>
-						</tr>
-						<tr class="budCategory">
-							<td class="budCatName">Rata kredytu hipotecznego</td>
-							<td class="budCatAmount hideable">1 300,00 zł</td>
-							<td class="budCatAmount hideable">0,00 zł</td>
-							<td class="budCatAmount budCatAvailable"><span class="greenAmount">1 300,00 zł</span></td>
-						</tr>
-						<tr class="budNewGroup">
-							<td id="newGroupTD">Dodaj nową grupę</td>
-							<td class="hideable"></td>
-							<td class="hideable"></td>
-							<td></td>
-						</tr>
-						<tr class="budSum">
-							<td class="budSumName">SUMA</td>
-							<td class="budSumAmount hideable">5 250,00 zł</td>
-							<td class="budSumAmount hideable">200,00 zł</td>
-							<td class="budSumAmount">5 050,00 zł</td>
-						</tr>
+                        <?php include "../php/manipulateBudget.php"; ?>
 						</tbody>
 					</table>
 				</section>

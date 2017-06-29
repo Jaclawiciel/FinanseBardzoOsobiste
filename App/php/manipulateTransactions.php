@@ -17,6 +17,7 @@ $dbname = "fbo";
 $connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
 // seth the PDO error mode to exception
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$connection -> query ('SET NAMES utf8');
 
 $userID = $_SESSION['userID'];
 function test_input($data) {
@@ -123,9 +124,9 @@ class CategoryList {
 }
 
 $categoryList = "";
-$sql = "SELECT UserID, CategoryID, Categories.Name FROM Groups JOIN Categories ON Groups.GroupID = Categories.GroupID WHERE UserID = $userID";
+$sql = "SELECT UserID, CategoryID, CategoryName FROM Groups JOIN Categories ON Groups.GroupID = Categories.GroupID WHERE UserID = $userID";
 foreach ($connection->query($sql) as $row) {
-    $category = new CategoryList($row['UserID'], $row['CategoryID'], $row['Name']);
+    $category = new CategoryList($row['UserID'], $row['CategoryID'], $row['CategoryName']);
     $categoryList .= $category->draw();
 }
 
@@ -199,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $transactionsHeader = new TransactionHeader($row['AccountID'], $row['Name'], $row['Balance']);
                 break;
             }
-            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
+            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
                     WHERE UserID = $userID AND AccountID = $transactionsHeader->accID ORDER BY TransactionDate DESC";
             foreach ($connection->query($sql) as $row) {
@@ -234,7 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             foreach ($connection->query($sql) as $row) {
                 $transactionsHeader = new TransactionHeader($row['AccountID'], $row['Name'], $row['Balance']);
             }
-            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
+            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
                     WHERE UserID = $userID AND AccountID = $accountID ORDER BY TransactionDate DESC";
             foreach ($connection->query($sql) as $row) {

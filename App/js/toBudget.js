@@ -4,6 +4,8 @@
 
 function reloadToBudget() {
     "use strict";
+
+    // To budget amount in header
     var toBudgetDiv = document.getElementById('toBudgetDiv');
     var toBudgetAmountElement = document.getElementById('toBudgetAmount');
 
@@ -13,7 +15,16 @@ function reloadToBudget() {
     for (var i = 0; i < accounts.length; i++) {
         accountsSum += parseFloat(accounts[i].innerHTML.replace(" zł", ""));
     }
-    toBudgetAmountElement.innerHTML = accountsSum.toFixed(2) + " zł";
+
+    var budgetedElements = document.getElementsByClassName('budgeted');
+    var budgetedSum = 0.00;
+    for (var i = 0; i < budgetedElements.length; i++) {
+        budgetedSum += parseFloat(budgetedElements[i].innerHTML.replace(" zł", ""));
+    }
+
+
+
+    toBudgetAmountElement.innerHTML = (accountsSum - budgetedSum).toFixed(2) + " zł";
 
     if (accountsSum > 0) {
         toBudgetDiv.classList.remove('greenAmount');
@@ -27,5 +38,26 @@ function reloadToBudget() {
         toBudgetDiv.classList.remove('yellowAmount');
         toBudgetDiv.classList.remove('greenAmount');
         toBudgetDiv.classList.add('redAmount');
+    }
+
+
+    // Available coloring
+    var availables = document.getElementsByClassName('budCatAmount available');
+    for (var i = 0; i < availables.length; i++) {
+        var available = availables[i].getElementsByTagName('span')[0];
+        var availableValue = parseFloat(available.innerHTML.replace(" zł", ""));
+        if (availableValue > 0) {
+            available.classList.add('greenAmount');
+            available.classList.remove('yellowAmount');
+            available.classList.remove('redAmount');
+        } else if (availableValue === 0) {
+            available.classList.add('yellowAmount');
+            available.classList.remove('greenAmount');
+            available.classList.remove('redAmount');
+        } else {
+            available.classList.add('redAmount');
+            available.classList.remove('greenAmount');
+            available.classList.remove('yellowAmount');
+        }
     }
 }

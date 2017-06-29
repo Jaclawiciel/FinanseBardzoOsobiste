@@ -16,6 +16,7 @@ $dbname = "fbo";
 $connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
 // seth the PDO error mode to exception
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$connection -> query ('SET NAMES utf8');
 
 $userID = $_SESSION['userID'];
 
