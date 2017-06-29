@@ -22,15 +22,15 @@ function reloadToBudget() {
         budgetedSum += parseFloat(budgetedElements[i].innerHTML.replace(" zł", ""));
     }
 
+    var toBudgetAmount = (accountsSum - budgetedSum).toFixed(2);
 
+    toBudgetAmountElement.innerHTML = toBudgetAmount + " zł";
 
-    toBudgetAmountElement.innerHTML = (accountsSum - budgetedSum).toFixed(2) + " zł";
-
-    if (accountsSum > 0) {
+    if (toBudgetAmount > 0) {
         toBudgetDiv.classList.remove('greenAmount');
         toBudgetDiv.classList.remove('redAmount');
         toBudgetDiv.classList.add('yellowAmount');
-    } else if(accountsSum === 0) {
+    } else if(toBudgetAmount == 0.00) {
         toBudgetDiv.classList.remove('redAmount');
         toBudgetDiv.classList.remove('yellowAmount');
         toBudgetDiv.classList.add('greenAmount');
