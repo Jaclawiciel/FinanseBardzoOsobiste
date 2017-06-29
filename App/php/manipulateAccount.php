@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
         $returnStr = "<div class='accounts'>";
 
-        echo "<div class='accounts'>" . $budgetDescAccount->draw() . $budgetAccountsStr . "</div>" . "<div class='accounts'>" . $savingDescAccount->draw() . $savingAccountsStr . "</div>";
+        echo "<div class='accounts' id='budgetAccounts'>" . $budgetDescAccount->draw() . $budgetAccountsStr . "</div>" . "<div class='accounts'>" . $savingDescAccount->draw() . $savingAccountsStr . "</div>";
     }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();

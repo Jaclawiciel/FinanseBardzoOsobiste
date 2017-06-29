@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
-                    WHERE UserID = $userID AND AccountID = $transactionsHeader->accID";
+                    WHERE UserID = $userID AND AccountID = $transactionsHeader->accID ORDER BY TransactionDate DESC";
             foreach ($connection->query($sql) as $row) {
                 $transactionRow = new TransactionRow($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
@@ -236,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
-                    WHERE UserID = $userID AND AccountID = $accountID";
+                    WHERE UserID = $userID AND AccountID = $accountID ORDER BY TransactionDate DESC";
             foreach ($connection->query($sql) as $row) {
                 $transactionRow = new TransactionRow($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);

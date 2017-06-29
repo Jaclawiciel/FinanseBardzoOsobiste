@@ -19,6 +19,7 @@
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
         <script src="../js/manipulateTransactions.js"></script>
+        <script src="../js/toBudget.js"></script>
 	</head>
 	<body class="heightLimit">
 		<div class="budgetGrid" id="blurDiv">
@@ -64,8 +65,8 @@
 							     style="width: 20px; height: 20px"
 							     alt="Następny miesiąc">
 						</div>
-						<div class="toBudgetDiv yellowAmount">
-							<span class="toBudgetAmount">1 500,00 zł</span>
+						<div class="toBudgetDiv yellowAmount" id="toBudgetDiv">
+							<span class="toBudgetAmount" id="toBudgetAmount">1 500,00 zł</span>
 							<span class="toBudgetDesc">Do rozdysponowania</span>
 						</div>
 					</div>
@@ -266,6 +267,7 @@
                 </div>
             </form>
         </aside>
+        <script>setTimeout(function() {reloadToBudget()}, 500)</script>
         <script>window.onload = displayAccounts;</script>
 	</body>
 </html>
