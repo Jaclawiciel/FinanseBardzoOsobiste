@@ -21,6 +21,7 @@
         <script src="../js/manipulateTransactions.js"></script>
         <script src="../js/highlightChoosenAccount.js"></script>
         <script src="../js/addNewTransaction.js"></script>
+        <script src="../js/newTransactionValidation.js"></script>
 	</head>
 	<body>
 		<div class="transactionsGrid" id="blurDiv">

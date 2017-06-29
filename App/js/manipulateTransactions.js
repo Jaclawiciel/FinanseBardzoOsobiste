@@ -11,8 +11,28 @@
 //     }
 // }
 
-function addNewTransaction(accountID) {
+function addNewTransactionFor(accountID) {
     "use strict";
+    var date = document.getElementById('NewTranDateInput').value;
+    var name;
+    if (document.getElementById('NewTranNameInputSmall').value === "") {
+        name = document.getElementById('NewTranNameInputLarge').value;
+    } else {
+        name = document.getElementById('NewTranNameInputSmall').value;
+    }
+    var categoryID = document.getElementById('NewTranCategoryID').value;
+    var amount = document.getElementById('NewTranAmountInput').value;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            hideNewTransactionsRow();
+        }
+    };
+    xhttp.open("POST", "../php/manipulateTransactions.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("date=" + date + "&name=" + name + "&categoryID" + categoryID + "&amount" + amount);
+    setTimeout(function(){ displayTransactions(accountID); }, 1000);
 }
 
 function displayTransactions(accountID) {

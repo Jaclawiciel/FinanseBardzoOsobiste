@@ -301,6 +301,15 @@
     .transactionsTable {
         margin-top: calc(57px + 37px + 21px);
     }
+
+    #newTransactionRowButtons {
+        text-align: right;
+    }
+
+    #newTransactionRowButtons button {
+        width: 150px;
+        margin-left: 5px;
+    }
 }
 
 @media screen and (min-width: 1440px) {

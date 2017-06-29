@@ -103,6 +103,37 @@ class Transaction {
     }
 }
 
+class CategoryList {
+    public $userID;
+    public $categoryID;
+    public $categoryName;
+
+    public function __construct($userID, $categoryID, $categoryName) {
+        $this->userID = $userID;
+        $this->categoryID = $categoryID;
+        $this->categoryName = $categoryName;
+
+    }
+
+    public function draw() {
+        return "
+        <option value='" . $this->categoryID . "'>" . $this->categoryName . "</option>
+        ";
+    }
+}
+
+$categoryList = "";
+$sql = "SELECT UserID, CategoryID, Categories.Name FROM Groups JOIN Categories ON Groups.GroupID = Categories.GroupID WHERE UserID = $userID";
+foreach ($connection->query($sql) as $row) {
+    $category = new CategoryList($row['UserID'], $row['CategoryID'], $row['Name']);
+    $categoryList .= $category->draw();
+}
+
+
+
+
+
+
 $dataValid = false;
 $accountID = "";
 
@@ -113,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $headerEnd = "</header>";
     $sectionStart = "<section class=\"transactionsSection\">
 					<header class=\"tableEditor\">";
-    $sectionAddButton =
+    $sectionAddButton = "";
 
     $sectionMiddle = "<a id=\"editTransaction\" href=\"\"><img src=\"../images/icons/svg/edit.svg\" style=\"width: 25px\"></a>
 						<a id=\"deleteTransaction\" href=\"\"><img src=\"../images/icons/svg/delete.svg\" style=\"width: 25px\"></a>
@@ -132,8 +163,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 						</tr>
 						</thead>
 						<tbody>
-                            <tr id='newTransactionRow' class='transactionRow'></tr>
-                            <tr id='newTransactionRowButtons' class='transactionRow'></tr>";
+						";
+    $sectionNewTransactionBeforeSmallCat = "<tr id='newTransactionRow' class='transactionRow'>
+                                                <td class='tranElem tranCheck hid'></td>
+                                                <td class='tranElem tranDate'><input id='NewTranDateInput' type='date' placeholder='Data' onfocusout=\"validateNewTransaction(document.getElementById('NewTranDateInput'), 'date')\"></td>
+                                                <td class='small'>
+                                                    <span class='tranElem tranName'><input id='NewTranNameInputSmall' type='text' placeholder='Nazwa transakcji' onfocusout=\"validateNewTransaction(document.getElementById('NewTranNameInputSmall'), 'name')\"></span>
+                                                    <span class='tranElem tranCat'>
+                                                        <select name='categories' id='NewTranCategoryID'>";
+    $sectionNewTransactionSmallCat = $categoryList;
+    $sectionNewTransactionAfterSmallCat = "        </select>
+                                                </span>
+                                            </td>";
+    $sectionNewTransactionBeforeLargeCat = "<td class='tranElem tranName hid'><input id='NewTranNameInputLarge' type='text' placeholder='Nazwa transakcji' onfocusout=\"validateNewTransaction(document.getElementById('NewTranNameInputLarge'), 'name')\"></td>
+                                            <td class='tranElem tranCat hid'>
+                                                <select name='categories' id=''>";
+    $sectionNewTransactionLargeCat = $categoryList;
+    $sectionNewTransactionAfterLargeCat = "    </select>
+                                           </td>
+                                           <td class='tranElem tranCost'><input id='NewTranAmountInput' type='text' placeholder='0.00 zł' onfocusout=\"validateNewTransaction(document.getElementById('NewTranAmountInput'), 'amount')\"></td>";
+    $sectionNewTransactionEnd = "</tr>";
+    $sectionNewTransactionButtons = "";
     $transactionRows = "";
     $sectionEnd = "</tbody></table></section>";
 
@@ -157,12 +207,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
-            $sectionAddButton = "<button onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
+            $sectionAddButton = "<button onclick='showNewTransactionRowFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
 							<div><img src=' ../images/icons/svg/plus-orange.svg' alt='Dodaj nową' style='width: 25px'>
 							Dodaj transakcję
 							</div>
 						</button>";
-            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $transactionRows . $sectionEnd;
+            $sectionNewTransactionButtons = "<tr id='newTransactionRowButtons' class='transactionRow'>
+                                        <td colspan='5'>
+                                            <button id='newTransactionAcceptButton' class='accept' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
+                                            <button class='cancel' onclick='hideNewTransactionsRow()'>Odrzuć</button>
+                                        </td>
+                                     </tr>";
+            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;
             echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
         }
         catch(PDOException $e) {
@@ -186,16 +242,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
-            $sectionAddButton = "<button onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
+            $sectionAddButton = "<button onclick='showNewTransactionRowFor(" . $transactionsHeader->accID . ")' id='addTransaction'>
 							<div><img src=' ../images/icons/svg/plus-orange.svg' alt='Dodaj nową' style='width: 25px'>
 							Dodaj transakcję
 							</div>
 						</button>";
-            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $transactionRows . $sectionEnd;
+            $sectionNewTransactionButtons = "<tr id='newTransactionRowButtons' class='transactionRow'>
+                                        <td colspan='5'>
+                                            <button id='newTransactionAcceptButton' class='accept' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
+                                            <button class='cancel' onclick='hideNewTransactionsRow()'>Odrzuć</button>
+                                        </td>
+                                     </tr>";
+            echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;
             echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
 }

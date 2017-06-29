@@ -215,7 +215,7 @@ footer address {
     color: var(--orange);
 }
 
-.button:disabled {
+.button:disabled, button:disabled {
     opacity:0.3;
 }
 
@@ -294,8 +294,9 @@ footer address {
 }
 
 .inputError {
-    border: solid 1px var(--red);
-    box-shadow: 0 0 5px var(--red);
+    border: solid 2px var(--red);
+    box-shadow: 0 0 8px 2px var(--red);
+    color: red;
 }
 
 span.formErrorMsg {
@@ -1151,6 +1152,8 @@ input[type="date"]
 
 .tranDate input {
     width: 100%;
+    max-width: 120px;
+    min-width: 90px;
 }
 
 .tranDate.tranElem {
@@ -1174,6 +1177,7 @@ input[type="date"]
     opacity: 0.5;
     font-size: 14px;
     font-style: italic;
+    max-width: 100px;
 }
 
 .tranCat input {
@@ -1213,6 +1217,7 @@ input[type="date"]
 #newTransactionRow {
     background-color: var(--darkGrey);
     border: none;
+    display: none;
 }
 
 #newTransactionRow input {
@@ -1222,14 +1227,17 @@ input[type="date"]
 
 #newTransactionRowButtons {
     width: 100%;
+    text-align: center;
+    display: none;
 }
 
 #newTransactionRowButtons button {
-    width: 50%;
+    width: 49%;
     background: none;
     border: none;
     color: #fff;
     padding: 8px 0;
+    text-align: center;
 }
 
 #newTransactionRowButtons .accept {
