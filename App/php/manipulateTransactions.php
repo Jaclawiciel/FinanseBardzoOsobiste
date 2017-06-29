@@ -63,7 +63,7 @@ class TransactionHeader {
     }
 }
 
-class Transaction {
+class TransactionRow {
     public $userID;
     public $accountID;
     public $categoryID;
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 						";
     $sectionNewTransactionBeforeSmallCat = "<tr id='newTransactionRow' class='transactionRow'>
                                                 <td class='tranElem tranCheck hid'></td>
-                                                <td class='tranElem tranDate'><input id='NewTranDateInput' type='date' placeholder='Data' onfocusout=\"validateNewTransaction(document.getElementById('NewTranDateInput'), 'date')\"></td>
+                                                <td class='tranElem tranDate'><input id='NewTranDateInput' type='date' placeholder='yyyy-mm-dd' onfocusout=\"validateNewTransaction(document.getElementById('NewTranDateInput'), 'date')\"></td>
                                                 <td class='small'>
                                                     <span class='tranElem tranName'><input id='NewTranNameInputSmall' type='text' placeholder='Nazwa transakcji' onfocusout=\"validateNewTransaction(document.getElementById('NewTranNameInputSmall'), 'name')\"></span>
                                                     <span class='tranElem tranCat'>
@@ -199,11 +199,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $transactionsHeader = new TransactionHeader($row['AccountID'], $row['Name'], $row['Balance']);
                 break;
             }
-            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, Transactions.Name AS TransactionName, Amount 
+            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
                     WHERE UserID = $userID AND AccountID = $transactionsHeader->accID";
             foreach ($connection->query($sql) as $row) {
-                $transactionRow = new Transaction($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
+                $transactionRow = new TransactionRow($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
@@ -234,11 +234,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             foreach ($connection->query($sql) as $row) {
                 $transactionsHeader = new TransactionHeader($row['AccountID'], $row['Name'], $row['Balance']);
             }
-            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, Transactions.Name AS TransactionName, Amount 
+            $sql = "SELECT UserID, AccountID, Transactions.CategoryID AS TranCatID, Categories.Name AS CategoryName, TransactionID, TransactionDate, TransactionName, Amount 
                     FROM Transactions JOIN Categories ON Transactions.CategoryID = Categories.CategoryID
                     WHERE UserID = $userID AND AccountID = $accountID";
             foreach ($connection->query($sql) as $row) {
-                $transactionRow = new Transaction($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
+                $transactionRow = new TransactionRow($row['UserID'], $row['AccountID'], $row['TranCatID'], $row['CategoryName'],
                     $row['TransactionID'], $row['TransactionDate'], $row['TransactionName'], $row['Amount']);
                 $transactionRows .= $transactionRow->draw();
             }
@@ -261,5 +261,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    class Transaction {
+        public $userID;
+        public $accountID;
+        public $categoryID;
+        public $transactionDate;
+        public $name;
+        public $amount;
 
+        public function __construct($userID, $accountID, $categoryID, $transactionDate, $name, $amount) {
+            $this->userID = $userID;
+            $this->accountID = $accountID;
+            $this->categoryID = $categoryID;
+            $this->transactionDate = $transactionDate;
+            $this->transactionName = $name;
+            $this->amount = $amount;
+        }
+
+        public function sqlInsertOperation() {
+            return "INSERT
+                    INTO Transactions (UserID, AccountID, CategoryID, TransactionDate, TransactionName, Amount)
+                    VALUES ($this->userID, $this->accountID, $this->categoryID," . quoter($this->transactionDate) . "," . quoter($this->transactionName) . ", $this->amount)";
+        }
+    }
+
+    try {
+        $transaction = new Transaction($userID, $_POST['accountID'], $_POST['categoryID'], $_POST['date'], $_POST['name'], $_POST['amount']);
+        $connection->exec($transaction->sqlInsertOperation());
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }

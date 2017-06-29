@@ -25,18 +25,11 @@ function formatDate(date) {
 function dateValidation(value) {
     "use strict";
 
+    value = new Date(value);
+    value = new MyDate(value.getDate(), value.getMonth() + 1, value.getFullYear());
+    window.console.log(value.printDate());
+
     var pattern = /^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).(19|20)\d\d$/;
-
-    if (pattern.test(value)) {
-        value = new MyDate(value.substr(1, 1), value.substr(4, 1), value.substr(6, 4));
-        window.console.log(value.printDate());
-    } else {
-        value = new Date(value);
-        value = new MyDate(value.getDate(), value.getMonth() + 1, value.getFullYear());
-        window.console.log(value.printDate());
-    }
-
-
     if (!pattern.test(value.printDate())) {
         return false;
     }

@@ -26,12 +26,13 @@ function addNewTransactionFor(accountID) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
             hideNewTransactionsRow();
         }
     };
     xhttp.open("POST", "../php/manipulateTransactions.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("date=" + date + "&name=" + name + "&categoryID" + categoryID + "&amount" + amount);
+    xhttp.send("date=" + date + "&name=" + name + "&categoryID=" + categoryID + "&amount=" + amount + "&accountID=" + accountID);
     setTimeout(function(){ displayTransactions(accountID); }, 1000);
 }
 
