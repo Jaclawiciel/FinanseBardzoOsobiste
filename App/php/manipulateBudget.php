@@ -118,7 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $connection = null;
 
 
     /****** PUT REQUEST ******/
@@ -135,3 +134,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         echo "Connection failed: " . $e->getMessage();
     }
 }
+$connection = null;

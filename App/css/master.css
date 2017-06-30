@@ -18,6 +18,7 @@
 body {
     font-family: 'Lato', sans-serif;
     color: var(--fontColor);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 /*** GENERAL ***/
@@ -48,6 +49,10 @@ p {
 
 img {
     max-width: 100%;
+}
+
+button {
+    cursor: pointer;
 }
 
 /*** LINKS ***/
@@ -1132,6 +1137,11 @@ table.budgetTable {
     margin-right: 5px;
 }
 
+#deleteTransaction {
+    background: none;
+    border: none;
+}
+
 .tableEditor #editTransaction,
 .tableEditor #deleteTransaction {
     display: none;
@@ -1277,6 +1287,10 @@ input:focus {
 
 #newTransactionRowButtons .cancel {
     background-color: var(--lightGrey);
+}
+
+@keyframes transactionDelete {
+
 }
 
 /*** SETTINGS ***/

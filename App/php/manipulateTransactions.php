@@ -89,8 +89,8 @@ class TransactionRow {
     public function draw() {
         return
             "
-            <tr class='transactionRow'>
-				<td class='tranElem tranCheck hid'><input type='checkbox' name='checkTran1' id='checkTran1'></td>
+            <tr class='transactionRow' id='transactionRow" . $this->transactionID . "'>
+				<td class='tranElem tranCheck hid'><input type='checkbox' name='checkTran" . $this->transactionID . "' id='checkTran" . $this->transactionID . "'></td>
 				<td class='tranElem tranDate'>" . $this->date . "</td>
 				<td class='small'>
 				    <span class='tranElem tranName'>" . $this->name . "</span>
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $sectionAddButton = "";
 
     $sectionMiddle = "<a id=\"editTransaction\" href=\"\"><img src=\"../images/icons/svg/edit.svg\" style=\"width: 25px\"></a>
-						<a id=\"deleteTransaction\" href=\"\"><img src=\"../images/icons/svg/delete.svg\" style=\"width: 25px\"></a>
+                        <button id='deleteTransaction' onclick='deleteTransactions()'><img src=\"../images/icons/svg/delete.svg\" style=\"width: 25px\"></button>
 						<div></div>
 						<a>Filtruj</a>
 					</header>
@@ -292,4 +292,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+    /****** PUT REQUEST ******/
+} elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    parse_str(file_get_contents("php://input"), $delete_vars);
+    foreach ($delete_vars as $key => $value) {
+        try {
+            $sql = "DELETE FROM Transactions WHERE TransactionID = $value";
+            $connection->exec($sql);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
 }
+$connection = null;

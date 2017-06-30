@@ -33,6 +33,7 @@ function addNewTransactionFor(accountID) {
     xhttp.open("POST", "../php/manipulateTransactions.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("date=" + date + "&name=" + name + "&categoryID=" + categoryID + "&amount=" + amount + "&accountID=" + accountID);
+    setTimeout(function(){ displayAccounts(); }, 500);
     setTimeout(function(){ displayTransactions(accountID); }, 1000);
 }
 
@@ -58,4 +59,42 @@ function displayTransactions(accountID) {
         xhttp.open("GET", url + params, true);
         xhttp.send();
     }
+}
+
+function deleteTransactions() {
+    "use strict";
+    var currentAccountID = document.getElementsByClassName('active')[0].id;
+    currentAccountID = currentAccountID.replace("accountID", "");
+
+    var checkTdElements = document.getElementsByClassName('tranCheck');
+    var transactionsToDelete = [];
+    for (var i = 2; i < checkTdElements.length; i++) {
+        var checkTdElement = checkTdElements[i];
+        var checkInput = checkTdElement.getElementsByTagName('input')[0];
+        if (checkInput.checked) {
+            var transactionID = checkInput.name.replace("checkTran", "");
+            transactionsToDelete.push(transactionID);
+        }
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
+        }
+    };
+    xhttp.open("DELETE", "../php/manipulateTransactions.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var sheet = window.document.styleSheets[1];
+    var params = "";
+    for (var i = 0; i < transactionsToDelete.length; i++) {
+        if (i > 0) {
+            params += "&";
+        }
+        params += "transactionID" + i + "=" + transactionsToDelete[i];
+        sheet.insertRule('#transactionRow' + transactionsToDelete[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    }
+    xhttp.send(params);
+    setTimeout(function(){ displayAccounts(); }, 300);
+    setTimeout(function () { displayTransactions(currentAccountID); }, 350);
 }
