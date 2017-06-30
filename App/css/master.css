@@ -600,6 +600,27 @@ table.budgetTable {
     background-color: var(--grey);
 }
 
+/* Budgeted input */
+
+.budCatAmount.budgeted input {
+    background: none;
+    border: none;
+    text-align: right;
+    color: var(--fontColor);
+    border: 1px solid transparent;
+}
+
+.budCatAmount.budgeted input:hover {
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+}
+
+.budCatAmount.budgeted input:focus {
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
 /* New group */
 
 .budNewGroup td {
@@ -1144,7 +1165,7 @@ input[type="date"]
     margin: 0;
 }
 
-.tranElem input:focus {
+input:focus {
     border: solid 1px var(--orange);
     box-shadow: 0 0 5px var(--orange);
     outline: none;

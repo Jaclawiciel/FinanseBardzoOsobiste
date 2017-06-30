@@ -6,6 +6,9 @@
  * Time: 13:29
  */
 
+if (!isset($_SESSION)) {
+    session_start();
+}
 $userID = $_SESSION['userID'];
 
 class Group {
@@ -61,7 +64,7 @@ class Category {
         return "
             <tr class='budCategory'>
 				<td class='budCatName'>" . $this->categoryName . "</td>
-				<td class='budCatAmount budgeted hideable'>" . number_format($this->budgeted, 2, ',', ' ') . " zł</td>
+				<td class='budCatAmount budgeted hideable'><input id='category" . $this->categoryID . "' onfocus='eraseCurrencyOnFocus()' onfocusout='updateBudget(" . $this->categoryID . ")' type='text' value='" . number_format($this->budgeted, 2, ',', ' ') . " zł'></td>
 				<td class=\"budCatAmount spent hideable\">" . number_format($this->spent, 2, ',', ' ') . " zł</td>
 				<td class=\"budCatAmount available budCatAvailable\"><span>" . number_format($this->available, 2, ',', ' ') . " zł</span></td>
 			</tr>
@@ -75,16 +78,14 @@ $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "^79q+a8&}u9/4Un";
 $dbname = "fbo";
-
+$connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
+// seth the PDO error mode to exception
+$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$connection -> query ('SET NAMES utf8');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
-        $connection = new PDO("mysql:host=$dbServername;dbname=$dbname", $dbUsername, $dbPassword);
-        // seth the PDO error mode to exception
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $connection -> query ('SET NAMES utf8');
-
         $budgetTable = "";
         $group;
         $category;
@@ -105,9 +106,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
                 $category->available = $category->budgeted + $category->spent;
                 $categories .= $category->draw();
+                $group->budgeted += $category->budgeted;
+                $group->spent += $category->spent;
+                $group->available = $group->budgeted + $group->spent;
             }
-            $group->spent += $category->spent;
-            $group->available = $group->budgeted - $group->spent;
+
             $budgetTable .= $group->draw() . $categories;
         }
         echo $budgetTable;
@@ -116,4 +119,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         echo "Error: " . $e->getMessage();
     }
     $connection = null;
+
+
+    /****** PUT REQUEST ******/
+} elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    parse_str(file_get_contents("php://input"), $put_vars);
+    $categoryID = $put_vars['categoryID'];
+    $amount = $put_vars['amount'];
+    echo $categoryID;
+    echo $amount;
+    try {
+        $sql = "UPDATE Categories SET Budgeted = $amount WHERE CategoryID = $categoryID";
+        $connection->exec($sql);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 }

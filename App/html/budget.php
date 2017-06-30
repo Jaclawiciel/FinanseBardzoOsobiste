@@ -84,7 +84,7 @@
 							<th class="budDescAmount">Dostępne</th>
 						</tr>
 						</thead>
-						<tbody>
+						<tbody id="budgetGoesHere">
                         <?php include "../php/manipulateBudget.php"; ?>
 						</tbody>
 					</table>
