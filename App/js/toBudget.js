@@ -51,13 +51,14 @@ function reloadToBudget() {
             available.classList.remove('yellowAmount');
             available.classList.remove('redAmount');
         } else if (availableValue === 0) {
-            available.classList.add('yellowAmount');
+            available.classList.add('greyAmount');
             available.classList.remove('greenAmount');
             available.classList.remove('redAmount');
         } else {
             available.classList.add('redAmount');
             available.classList.remove('greenAmount');
             available.classList.remove('yellowAmount');
+            window.console.log(available);
         }
     }
 }

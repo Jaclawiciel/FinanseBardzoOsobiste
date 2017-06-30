@@ -592,6 +592,10 @@ table.budgetTable {
     background-color: var(--yellow);
 }
 
+.budCategory span.redAmount {
+    background-color: var(--red);
+}
+
 .budCategory span.greyAmount {
     background-color: var(--grey);
 }
