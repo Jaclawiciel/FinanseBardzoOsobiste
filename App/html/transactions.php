@@ -47,8 +47,11 @@
                         </span>
                     </div>
                 </div>
-                <button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
-                                                                                           style="width: 60px"></button>
+                <div class="menuBottom">
+                    <button class="settingsButton rotating" onclick="showModalSettings()"><img src="../images/icons/svg/settings-white.svg" alt="Settings"
+                                                                                               style="width: 60px"></button>
+                    <button class="button" onclick="window.location.replace('../php/logout.php')">Wyloguj</button>
+                </div>
             </nav>
 			<main class="transactionsMain" id="transactionsMain">
                 <?php include "../php/manipulateTransactions.php"; ?>

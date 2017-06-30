@@ -202,6 +202,7 @@ footer address {
     color: #fff;
     font-size: 20px;
     transition: background-color 0.3s, border-radius 0.3s;
+    cursor: pointer;
 }
 
 .buttonDiv .button.grey {
@@ -977,6 +978,11 @@ table.budgetTable {
     to {
         transform: rotate(360deg);
     }
+}
+
+.menuBottom {
+    display: flex;
+    justify-content: space-between;
 }
 
 .mainMenuContainer .settingsButton {
