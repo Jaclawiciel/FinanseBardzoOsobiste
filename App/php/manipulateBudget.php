@@ -11,6 +11,11 @@ if (!isset($_SESSION)) {
 }
 $userID = $_SESSION['userID'];
 
+function quoter($data) {
+    $data = "'" . $data . "'";
+    return $data;
+}
+
 class Group {
     // Creating some properties (variables tied to an object)
     public $groupID;
@@ -88,7 +93,7 @@ class NewGroup {
 			    <div class='budNewGroupForm'>
 			        <input id='newGroupNameInput' type='text' placeholder='Nazwa nowej grupy' onfocusout='validateNewGroupName()'>
 			        <div class='buttonDiv'>
-			            <button id='newGroupAcceptButton' class='accept button' disabled>Dodaj</button>
+			            <button id='newGroupAcceptButton' class='accept button' onclick='addGroup()' disabled>Dodaj</button>
 			            <button class='cancel button' onclick='showNewGroupForm(false)'>Odrzuc</button>
 			        </div>
 			        </div>
@@ -184,10 +189,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     parse_str(file_get_contents("php://input"), $put_vars);
     $categoryID = $put_vars['categoryID'];
     $amount = $put_vars['amount'];
-    echo $categoryID;
-    echo $amount;
     try {
         $sql = "UPDATE Categories SET Budgeted = $amount WHERE CategoryID = $categoryID";
+        $connection->exec($sql);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $newGroupName = $_POST['newGroupName'];
+    $quotedNewGroupname = quoter($newGroupName);
+    try {
+        $sql = "INSERT INTO Groups (UserID, GroupName) VALUES ($userID, $quotedNewGroupname)";
         $connection->exec($sql);
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
