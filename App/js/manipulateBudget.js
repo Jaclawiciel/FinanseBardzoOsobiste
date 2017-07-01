@@ -285,3 +285,22 @@ function deleteCategory(categoryID) {
     setTimeout(function(){ displayBudget(); }, 350);
     setTimeout(function(){ reloadToBudget(); }, 600);
 }
+
+function deleteGroup(groupID) {
+    "use strict";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
+        }
+    };
+    xhttp.open("DELETE", "../php/manipulateBudget.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "groupID=" + groupID;
+    xhttp.send(params);
+    var sheet = window.document.styleSheets[1];
+    // sheet.insertRule('#rowCategoryID' + categoryID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    setTimeout(function(){ displayBudget(); }, 350);
+    setTimeout(function(){ reloadToBudget(); }, 600);
+}

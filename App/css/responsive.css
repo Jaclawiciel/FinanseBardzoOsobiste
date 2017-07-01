@@ -272,7 +272,8 @@
 
     /* Delete category and group */
 
-    .budCategory:hover .categoryDeleteButton {
+    .budCategory:hover .categoryDeleteButton,
+    .budGroup:hover .groupDeleteButton {
         display: inline;
     }
 

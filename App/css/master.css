@@ -720,7 +720,7 @@ table.budgetTable {
 
 /* Delete category and group */
 
-.categoryDeleteButton {
+.categoryDeleteButton, .groupDeleteButton {
     display: none;
     padding-top: 0;
     padding-bottom: 0;
@@ -729,6 +729,7 @@ table.budgetTable {
 .budCatName div {
     display: flex;
     align-content: center;
+    align-self: center;
 }
 
 

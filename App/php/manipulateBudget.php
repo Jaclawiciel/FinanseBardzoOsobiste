@@ -39,8 +39,12 @@ class Group {
     public function draw() {
         return "
         <tr class='budGroup'>
-			<td class='budGroupName'>" . $this->groupName . " 
-			    <button onclick='showNewCategoryForm(true, " . $this->groupID . ")'><img src='../images/icons/svg/plus.svg' alt='Dodaj nową kategorię' style='width: 20px'></button>
+			<td class='budGroupName'>
+			    <div>
+			        <span>" . $this->groupName . "</span>
+			        <button onclick='showNewCategoryForm(true, " . $this->groupID . ")'><img src='../images/icons/svg/plus.svg' alt='Dodaj nową kategorię' style='width: 20px'></button>
+			        <button class='groupDeleteButton' onclick='deleteGroup(" . $this->groupID . ")'><img style='width: 20px; height: 20px;' src='../images/icons/svg/delete-white.svg'></button>
+                </div>
 			</td>
 			<td class='budGroupAmount hideable'>" . number_format($this->budgeted, 2, ',', ' ') . " zł</td>
 			<td class='budGroupAmount hideable'>" . number_format($this->spent, 2, ',', ' ') . " zł</td>
@@ -242,12 +246,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 
 
-    /****** PUT REQUEST ******/
+    /****** DELETE REQUEST ******/
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     parse_str(file_get_contents("php://input"), $delete_vars);
     $categoryID = $delete_vars['categoryID'];
-    try {
+    $groupID = $delete_vars['groupID'];
+    if (!empty($categoryID)) {
         $sql = "DELETE FROM Categories WHERE CategoryID = $categoryID";
+    } else {
+        $sql = "DELETE FROM Groups WHERE GroupID = $groupID";
+    }
+    try {
         $connection->exec($sql);
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
