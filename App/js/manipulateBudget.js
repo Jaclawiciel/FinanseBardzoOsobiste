@@ -299,8 +299,21 @@ function deleteGroup(groupID) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var params = "groupID=" + groupID;
     xhttp.send(params);
+
+
+    var rowGroupID = "#rowGroupID" + groupID;
+    var categoriesInGroup = document.getElementsByClassName('catInGroupID' + groupID);
+    var categoryIDs = [];
+    for (var i = 0; i < categoriesInGroup.length; i++) {
+        categoryIDs.push(categoriesInGroup[i].id);
+    }
+
     var sheet = window.document.styleSheets[1];
-    // sheet.insertRule('#rowCategoryID' + categoryID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    sheet.insertRule(rowGroupID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    for (var i = 0; i < categoryIDs.length; i++) {
+        sheet.insertRule('#' + categoryIDs[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    }
+
     setTimeout(function(){ displayBudget(); }, 350);
     setTimeout(function(){ reloadToBudget(); }, 600);
 }

@@ -38,7 +38,7 @@ class Group {
 
     public function draw() {
         return "
-        <tr class='budGroup'>
+        <tr class='budGroup' id='rowGroupID" . $this->groupID . "'>
 			<td class='budGroupName'>
 			    <div>
 			        <span>" . $this->groupName . "</span>
@@ -73,7 +73,7 @@ class Category {
 
     public function draw() {
         return "
-            <tr class='budCategory' id='rowCategoryID" . $this->categoryID . "'>
+            <tr class='budCategory catInGroupID" . $this->groupID . "' id='rowCategoryID" . $this->categoryID . "'>
 				<td class='budCatName'><div><span>" . $this->categoryName . "</span><button class='categoryDeleteButton' onclick='deleteCategory(" . $this->categoryID . ")'><img style='width: 20px; height: 20px;' src='../images/icons/svg/delete.svg'></button></div></td>
 				<td class='budCatAmount budgeted hideable'><input id='category" . $this->categoryID . "' onfocus='eraseCurrencyOnFocus()' onfocusout='updateBudget(" . $this->categoryID . ")' type='text' value='" . number_format($this->budgeted, 2, ',', '') . " zł'></td>
 				<td class=\"budCatAmount spent hideable\">" . number_format($this->spent, 2, ',', '') . " zł</td>
