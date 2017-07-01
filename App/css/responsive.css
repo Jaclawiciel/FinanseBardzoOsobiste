@@ -270,6 +270,12 @@
         width: calc(100% - 300px);
     }
 
+    /* Delete category and group */
+
+    .budCategory:hover .categoryDeleteButton {
+        display: inline;
+    }
+
 
 
     /* Menu */

@@ -627,6 +627,10 @@ table.budgetTable {
     background-color: var(--grey);
 }
 
+.budCatName span {
+    color: var(--fontColor);
+}
+
 /* Budgeted input */
 
 .budCatAmount.budgeted input {
@@ -673,9 +677,6 @@ table.budgetTable {
     border: none;
 }
 
-
-
-
 #budNewGroupRow,.newCategoryRow {
     display: none;
 
@@ -717,6 +718,18 @@ table.budgetTable {
     margin-top: 2px;
 }
 
+/* Delete category and group */
+
+.categoryDeleteButton {
+    display: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.budCatName div {
+    display: flex;
+    align-content: center;
+}
 
 
 /* Sum */

@@ -69,8 +69,8 @@ class Category {
 
     public function draw() {
         return "
-            <tr class='budCategory'>
-				<td class='budCatName'>" . $this->categoryName . "</td>
+            <tr class='budCategory' id='rowCategoryID" . $this->categoryID . "'>
+				<td class='budCatName'><div><span>" . $this->categoryName . "</span><button class='categoryDeleteButton' onclick='deleteCategory(" . $this->categoryID . ")'><img style='width: 20px; height: 20px;' src='../images/icons/svg/delete.svg'></button></div></td>
 				<td class='budCatAmount budgeted hideable'><input id='category" . $this->categoryID . "' onfocus='eraseCurrencyOnFocus()' onfocusout='updateBudget(" . $this->categoryID . ")' type='text' value='" . number_format($this->budgeted, 2, ',', '') . " zł'></td>
 				<td class=\"budCatAmount spent hideable\">" . number_format($this->spent, 2, ',', '') . " zł</td>
 				<td class=\"budCatAmount available budCatAvailable\"><span>" . number_format($this->available, 2, ',', '') . " zł</span></td>
@@ -236,6 +236,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $quotedNewCategoryName = quoter($newCategoryName);
     try {
         $sql = "INSERT INTO Categories (GroupID, CategoryName) VALUES ($groupID, $quotedNewCategoryName)";
+        $connection->exec($sql);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+
+
+    /****** PUT REQUEST ******/
+} elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    parse_str(file_get_contents("php://input"), $delete_vars);
+    $categoryID = $delete_vars['categoryID'];
+    try {
+        $sql = "DELETE FROM Categories WHERE CategoryID = $categoryID";
         $connection->exec($sql);
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();

@@ -2,6 +2,8 @@
  * Created by Jacek on 29.06.2017.
  */
 
+
+
 function showNewGroupForm(state) {
     "use strict";
     var newGroupRow = document.getElementById('budNewGroupRow');
@@ -262,5 +264,24 @@ function addCategoryToGroupID(groupID) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newCategoryName=" + inputValue + "&groupID=" + groupID);
     setTimeout(function(){ displayBudget(); }, 300);
+    setTimeout(function(){ reloadToBudget(); }, 600);
+}
+
+function deleteCategory(categoryID) {
+    "use strict";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
+        }
+    };
+    xhttp.open("DELETE", "../php/manipulateBudget.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "categoryID=" + categoryID;
+    xhttp.send(params);
+    var sheet = window.document.styleSheets[1];
+    sheet.insertRule('#rowCategoryID' + categoryID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
+    setTimeout(function(){ displayBudget(); }, 350);
     setTimeout(function(){ reloadToBudget(); }, 600);
 }
