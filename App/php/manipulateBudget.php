@@ -119,7 +119,7 @@ class NewCategory {
 			    <div class='newCategoryForm'>
 			        <input id='newCategoryNameInputForGroupID" . $this->groupID . "' type='text' placeholder='Nazwa nowej kategorii' onfocusout='validateNewCategoryName(" . $this->groupID . ")'>
 			        <div class='buttonDiv'>
-			            <button id='newCategoryAcceptButton' class='accept button' onclick='addCategory()' disabled>Dodaj</button>
+			            <button id='newCategoryAcceptButton' class='accept button' onclick='addCategoryToGroupID(" . $this->groupID . ")' disabled>Dodaj</button>
 			            <button class='cancel button' onclick='showNewCategoryForm(false, " . $this->groupID . ")'>Odrzuc</button>
 			        </div>
 			        </div>
@@ -221,11 +221,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['newGroupName'])) {
     $newGroupName = $_POST['newGroupName'];
-    $quotedNewGroupname = quoter($newGroupName);
+    $quotedNewGroupName = quoter($newGroupName);
     try {
-        $sql = "INSERT INTO Groups (UserID, GroupName) VALUES ($userID, $quotedNewGroupname)";
+        $sql = "INSERT INTO Groups (UserID, GroupName) VALUES ($userID, $quotedNewGroupName)";
+        $connection->exec($sql);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['newCategoryName'])) {
+    $groupID = $_POST['groupID'];
+    $newCategoryName = $_POST['newCategoryName'];
+    $quotedNewCategoryName = quoter($newCategoryName);
+    try {
+        $sql = "INSERT INTO Categories (GroupID, CategoryName) VALUES ($groupID, $quotedNewCategoryName)";
         $connection->exec($sql);
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();

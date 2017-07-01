@@ -27,7 +27,7 @@ function validateNewGroupName() {
     }
 
     function groupNameValidation(value) {
-        var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ]+))+$/;
+        var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+))+$/;
         return !pattern.test(value);
     }
 
@@ -77,7 +77,7 @@ function validateNewCategoryName(groupID) {
     }
 
     function categoryNameValidation(value) {
-        var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ]+))+$/;
+        var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+))+$/;
         return !pattern.test(value);
     }
 
@@ -241,6 +241,26 @@ function addGroup() {
     xhttp.open("POST", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newGroupName=" + inputValue);
+    setTimeout(function(){ displayBudget(); }, 300);
+    setTimeout(function(){ reloadToBudget(); }, 600);
+}
+
+function addCategoryToGroupID(groupID) {
+    "use strict";
+    var inputStr = "newCategoryNameInputForGroupID" + groupID;
+
+    var input = document.getElementById(inputStr);
+    var inputValue = input.value;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.console.log(this.responseText);
+        }
+    };
+    xhttp.open("POST", "../php/manipulateBudget.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("newCategoryName=" + inputValue + "&groupID=" + groupID);
     setTimeout(function(){ displayBudget(); }, 300);
     setTimeout(function(){ reloadToBudget(); }, 600);
 }
