@@ -47,14 +47,16 @@
         display: table-cell;
     }
 
-    /* New group */
+    /* New group, category */
 
-    .budNewGroupForm .buttonDiv {
+    .budNewGroupForm .buttonDiv,
+    .newCategoryForm .buttonDiv {
         flex-direction: row;
         justify-content: flex-end;
     }
 
-    .budNewGroupForm .buttonDiv .button {
+    .budNewGroupForm .buttonDiv .button,
+    .newCategoryForm .buttonDiv .button {
         margin-top: 0;
         margin-left: 10px;
     }

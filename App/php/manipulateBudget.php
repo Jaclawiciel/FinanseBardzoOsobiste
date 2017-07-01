@@ -24,6 +24,7 @@ class Group {
     public $budgeted;
     public $spent;
     public $available;
+    public $newCategoryRow;
 
     public function __construct($groupID, $userID, $groupName, $budgeted, $spent, $available) {
         $this->groupID = $groupID;
@@ -32,13 +33,14 @@ class Group {
         $this->budgeted = $budgeted;
         $this->spent = $spent;
         $this->available = $available;
+        $this->newCategoryRow = new NewCategory($groupID);
     }
 
     public function draw() {
         return "
         <tr class='budGroup'>
 			<td class='budGroupName'>" . $this->groupName . " 
-			    <img src='../images/icons/svg/plus.svg' alt='Dodaj nową kategorię' style='width: 20px'>
+			    <button onclick='showNewCategoryForm(true, " . $this->groupID . ")'><img src='../images/icons/svg/plus.svg' alt='Dodaj nową kategorię' style='width: 20px'></button>
 			</td>
 			<td class='budGroupAmount hideable'>" . number_format($this->budgeted, 2, ',', ' ') . " zł</td>
 			<td class='budGroupAmount hideable'>" . number_format($this->spent, 2, ',', ' ') . " zł</td>
@@ -95,6 +97,30 @@ class NewGroup {
 			        <div class='buttonDiv'>
 			            <button id='newGroupAcceptButton' class='accept button' onclick='addGroup()' disabled>Dodaj</button>
 			            <button class='cancel button' onclick='showNewGroupForm(false)'>Odrzuc</button>
+			        </div>
+			        </div>
+			    </td>
+            </tr>
+        ";
+    }
+}
+
+class NewCategory {
+    public $groupID;
+
+    public function __construct($groupID) {
+        $this->groupID = $groupID;
+    }
+
+    public function draw() {
+        return "
+        <tr class='newCategoryRow' id='newCategoryRowForGroupID" . $this->groupID . "'>
+			    <td colspan='4'>
+			    <div class='newCategoryForm'>
+			        <input id='newCategoryNameInputForGroupID" . $this->groupID . "' type='text' placeholder='Nazwa nowej kategorii' onfocusout='validateNewCategoryName(" . $this->groupID . ")'>
+			        <div class='buttonDiv'>
+			            <button id='newCategoryAcceptButton' class='accept button' onclick='addCategory()' disabled>Dodaj</button>
+			            <button class='cancel button' onclick='showNewCategoryForm(false, " . $this->groupID . ")'>Odrzuc</button>
 			        </div>
 			        </div>
 			    </td>
@@ -172,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $globalSum->availableSum += $group->available;
             }
 
-            $budgetTable .= $group->draw() . $categories;
+            $budgetTable .= $group->draw() . $group->newCategoryRow->draw() . $categories;
         }
 
         $budgetTable .= $newGroupRow->draw();

@@ -5,11 +5,13 @@
 function showNewGroupForm(state) {
     "use strict";
     var newGroupRow = document.getElementById('budNewGroupRow');
+    var input = document.getElementById('newGroupNameInput');
     if (state) {
         newGroupRow.style.cssText = 'display: table-row';
     } else {
         newGroupRow.style.cssText = 'display: none';
-        newGroupRow.reset();
+        input.value = "";
+        input.classList.remove('inputError');
     }
 }
 
@@ -42,6 +44,56 @@ function validateNewGroupName() {
     }
 }
 
+function showNewCategoryForm(state, groupID) {
+    "use strict";
+    var idStr = "newCategoryRowForGroupID" + groupID;
+    var inputStr = "newCategoryNameInputForGroupID" + groupID;
+
+    var newCategoryRow = document.getElementById(idStr);
+    var newCategoryInput = document.getElementById(inputStr);
+
+    if (state) {
+        newCategoryRow.style.cssText = 'display: table-row';
+    } else {
+        newCategoryRow.style.cssText = 'display: none';
+        newCategoryInput.value = "";
+        newCategoryInput.classList.remove('inputError');
+    }
+}
+
+function validateNewCategoryName(groupID) {
+    "use strict";
+    var idStr = "newCategoryRowForGroupID" + groupID;
+    var inputStr = "newCategoryNameInputForGroupID" + groupID;
+
+    var newCategoryRow = document.getElementById(idStr);
+    var input = document.getElementById(inputStr);
+    var inputValue = input.value;
+    var acceptButton = newCategoryRow.getElementsByClassName('accept button')[0];
+
+        function empty(value) {
+        var pattern = /.+/;
+        return !pattern.test(value);
+    }
+
+    function categoryNameValidation(value) {
+        var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ]+))+$/;
+        return !pattern.test(value);
+    }
+
+    var dataValid = true;
+    if (empty(inputValue) || categoryNameValidation(inputValue)) {
+        dataValid = false;
+    }
+    if (dataValid) {
+        acceptButton.disabled = false;
+        input.classList.remove('inputError');
+    } else {
+        acceptButton.disabled = true;
+        input.classList.add('inputError');
+    }
+}
+
 function reloadToBudget() {
     "use strict";
 
@@ -50,7 +102,6 @@ function reloadToBudget() {
     var toBudgetAmountElement = document.getElementById('toBudgetAmount');
 
     var accounts = document.getElementById("budgetAccounts").getElementsByClassName('accountAmount');
-    window.console.log(accounts);
     var accountsSum = 0.00;
     for (var i = 0; i < accounts.length; i++) {
         accountsSum += parseFloat(accounts[i].innerHTML.replace(" zł", ""));

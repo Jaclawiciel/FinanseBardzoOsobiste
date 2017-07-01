@@ -676,17 +676,17 @@ table.budgetTable {
 
 
 
-#budNewGroupRow {
+#budNewGroupRow,.newCategoryRow {
     display: none;
 
 }
 
-#budNewGroupRow td {
+#budNewGroupRow td, #newCategoryRow td {
     margin: 0;
     padding: 0;
 }
 
-.budNewGroupForm {
+.budNewGroupForm, .newCategoryForm {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -694,14 +694,16 @@ table.budgetTable {
 }
 
 
-.budNewGroupForm input {
+.budNewGroupForm input,
+.newCategoryForm input {
     border: 1px solid var(--categoryBorder);
     background: #fff;
     width: 60%;
     margin: 0 10px;
 }
 
-.budNewGroupForm .buttonDiv {
+.budNewGroupForm .buttonDiv,
+.newCategoryForm .buttonDiv {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -710,7 +712,8 @@ table.budgetTable {
     margin-right: 10px;
 }
 
-.budNewGroupForm .buttonDiv .button {
+.budNewGroupForm .buttonDiv .button,
+.newCategoryForm .buttonDiv .button {
     margin-top: 2px;
 }
 
