@@ -171,14 +171,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                                 <td class='small'>
                                                     <span class='tranElem tranName'><input id='NewTranNameInputSmall' type='text' placeholder='Nazwa transakcji' onfocusout=\"validateNewTransaction(document.getElementById('NewTranNameInputSmall'), 'name')\"></span>
                                                     <span class='tranElem tranCat'>
-                                                        <select name='categories' id='NewTranCategoryID'>";
+                                                        <select name='categories' id='NewTranCategoryIDSmall'>";
     $sectionNewTransactionSmallCat = $categoryList;
     $sectionNewTransactionAfterSmallCat = "        </select>
                                                 </span>
                                             </td>";
     $sectionNewTransactionBeforeLargeCat = "<td class='tranElem tranName hid'><input id='NewTranNameInputLarge' type='text' placeholder='Nazwa transakcji' onfocusout=\"validateNewTransaction(document.getElementById('NewTranNameInputLarge'), 'name')\"></td>
                                             <td class='tranElem tranCat hid'>
-                                                <select name='categories' id=''>";
+                                                <select name='categories' id='NewTranCategoryIDLarge'>";
     $sectionNewTransactionLargeCat = $categoryList;
     $sectionNewTransactionAfterLargeCat = "    </select>
                                            </td>
@@ -215,8 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 						</button>";
             $sectionNewTransactionButtons = "<tr id='newTransactionRowButtons' class='transactionRow'>
                                         <td colspan='5'>
-                                            <button id='newTransactionAcceptButton' class='accept' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
-                                            <button class='cancel' onclick='hideNewTransactionsRow()'>Odrzuć</button>
+                                            <button id='newTransactionAcceptButton' class='accept button' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
+                                            <button class='cancel button' onclick='hideNewTransactionsRow()'>Odrzuć</button>
                                         </td>
                                      </tr>";
             echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;
@@ -250,8 +250,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 						</button>";
             $sectionNewTransactionButtons = "<tr id='newTransactionRowButtons' class='transactionRow'>
                                         <td colspan='5'>
-                                            <button id='newTransactionAcceptButton' class='accept' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
-                                            <button class='cancel' onclick='hideNewTransactionsRow()'>Odrzuć</button>
+                                            <button id='newTransactionAcceptButton' class='accept button' onclick='addNewTransactionFor(" . $transactionsHeader->accID . ")' disabled>Akceptuj</button>
+                                            <button class='cancel button' onclick='hideNewTransactionsRow()'>Odrzuć</button>
                                         </td>
                                      </tr>";
             echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;

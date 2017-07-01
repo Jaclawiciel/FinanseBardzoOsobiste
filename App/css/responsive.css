@@ -10,7 +10,7 @@
 /*** Tablet ***/
 @media screen and (min-width: 568px) {
 
-    /* Budget */
+    /*** BUDGET ***/
 
 
 
@@ -46,6 +46,21 @@
     .budgetTable .hideable {
         display: table-cell;
     }
+
+    /* New group */
+
+    .budNewGroupForm .buttonDiv {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .budNewGroupForm .buttonDiv .button {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+
+
 
     /* Transactions */
     .transactionsHeader .col:nth-child(-n + 4) {
@@ -252,6 +267,8 @@
         left: 300px;
         width: calc(100% - 300px);
     }
+
+
 
     /* Menu */
 

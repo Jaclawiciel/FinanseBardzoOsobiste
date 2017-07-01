@@ -53,6 +53,8 @@ img {
 
 button {
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
 /*** LINKS ***/
@@ -202,7 +204,7 @@ footer address {
 .button {
     padding: 5px 10px;
     border-radius: 0;
-    border: 0;
+    border: 1px solid var(--orange);
     background-color: var(--orange);
     color: #fff;
     font-size: 20px;
@@ -210,11 +212,31 @@ footer address {
     cursor: pointer;
 }
 
+button.button.accept {
+    background-color: var(--orange);
+    color: #fff;
+    border: 1px solid var(--orange);
+
+}
+
+button.button.cancel {
+    background-color: var(--darkGrey);
+    color: #fff;
+    border: 1px solid var(--darkGrey);
+}
+
+button.button.cancel:hover {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--darkGrey);
+    color: var(--darkGrey);
+}
+
 .buttonDiv .button.grey {
     background-color: var(--lightGrey);
 }
 
-.button:hover, .button:enabled:hover {
+button.button:hover, .button:enabled:hover {
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid var(--orange);
@@ -629,7 +651,7 @@ table.budgetTable {
 /* New group */
 
 .budNewGroup td {
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .budNewGroup {
@@ -638,13 +660,61 @@ table.budgetTable {
     padding-left: 20px;
 }
 
-#newGroupTD {
+#newGroupButton {
+    color: var(--fontColor);
+    background: none;
     background: no-repeat left;
     background-size: 25px;
     background-position: 10px;
     padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-image: url("../images/icons/svg/plus-lightgrey.svg");
+    border: none;
 }
+
+
+
+
+#budNewGroupRow {
+    display: none;
+
+}
+
+#budNewGroupRow td {
+    margin: 0;
+    padding: 0;
+}
+
+.budNewGroupForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.budNewGroupForm input {
+    border: 1px solid var(--categoryBorder);
+    background: #fff;
+    width: 60%;
+    margin: 0 10px;
+}
+
+.budNewGroupForm .buttonDiv {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.budNewGroupForm .buttonDiv .button {
+    margin-top: 2px;
+}
+
+
 
 /* Sum */
 
@@ -1274,19 +1344,11 @@ input:focus {
 
 #newTransactionRowButtons button {
     width: 49%;
-    background: none;
-    border: none;
-    color: #fff;
-    padding: 8px 0;
-    text-align: center;
-}
-
-#newTransactionRowButtons .accept {
-    background-color: var(--orange);
-}
-
-#newTransactionRowButtons .cancel {
-    background-color: var(--lightGrey);
+    /*border: none;*/
+    /*color: #fff;*/
+    /*padding: 8px 0;*/
+    /*text-align: center;*/
+    /*border-radius: 5px;*/
 }
 
 @keyframes transactionDelete {

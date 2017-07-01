@@ -15,12 +15,14 @@ function addNewTransactionFor(accountID) {
     "use strict";
     var date = document.getElementById('NewTranDateInput').value;
     var name;
+    var categoryID;
     if (document.getElementById('NewTranNameInputSmall').value === "") {
         name = document.getElementById('NewTranNameInputLarge').value;
+        categoryID = document.getElementById('NewTranCategoryIDLarge').value;
     } else {
         name = document.getElementById('NewTranNameInputSmall').value;
+        categoryID = document.getElementById('NewTranCategoryIDSmall').value;
     }
-    var categoryID = document.getElementById('NewTranCategoryID').value;
     var amount = document.getElementById('NewTranAmountInput').value;
 
     var xhttp = new XMLHttpRequest();

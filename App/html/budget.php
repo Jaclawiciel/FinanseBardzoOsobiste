@@ -19,7 +19,7 @@
         <script src="../js/deleteConfirm.js"></script>
         <script src="../js/manipulateAccount.js"></script>
         <script src="../js/manipulateTransactions.js"></script>
-        <script src="../js/toBudget.js"></script>
+        <script src="../js/manipulateBudget.js"></script>
 	</head>
 	<body class="heightLimit">
 		<div class="budgetGrid" id="blurDiv">

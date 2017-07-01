@@ -64,11 +64,61 @@ class Category {
         return "
             <tr class='budCategory'>
 				<td class='budCatName'>" . $this->categoryName . "</td>
-				<td class='budCatAmount budgeted hideable'><input id='category" . $this->categoryID . "' onfocus='eraseCurrencyOnFocus()' onfocusout='updateBudget(" . $this->categoryID . ")' type='text' value='" . number_format($this->budgeted, 2, ',', ' ') . " zł'></td>
-				<td class=\"budCatAmount spent hideable\">" . number_format($this->spent, 2, ',', ' ') . " zł</td>
-				<td class=\"budCatAmount available budCatAvailable\"><span>" . number_format($this->available, 2, ',', ' ') . " zł</span></td>
+				<td class='budCatAmount budgeted hideable'><input id='category" . $this->categoryID . "' onfocus='eraseCurrencyOnFocus()' onfocusout='updateBudget(" . $this->categoryID . ")' type='text' value='" . number_format($this->budgeted, 2, ',', '') . " zł'></td>
+				<td class=\"budCatAmount spent hideable\">" . number_format($this->spent, 2, ',', '') . " zł</td>
+				<td class=\"budCatAmount available budCatAvailable\"><span>" . number_format($this->available, 2, ',', '') . " zł</span></td>
 			</tr>
         ";
+    }
+}
+
+class NewGroup {
+
+    public function __construct() {
+    }
+
+    public function draw() {
+        return
+            "
+            <tr class='budNewGroup'>
+			    <td id='newGroupTD' colspan='4'><button id='newGroupButton' onclick='showNewGroupForm(true)'>Dodaj nową grupę</button></td>
+			</tr>
+			<tr class='budGroup' id='budNewGroupRow'>
+			    <td colspan='4'>
+			    <div class='budNewGroupForm'>
+			        <input id='newGroupNameInput' type='text' placeholder='Nazwa nowej grupy' onfocusout='validateNewGroupName()'>
+			        <div class='buttonDiv'>
+			            <button id='newGroupAcceptButton' class='accept button' disabled>Dodaj</button>
+			            <button class='cancel button' onclick='showNewGroupForm(false)'>Odrzuc</button>
+			        </div>
+			        </div>
+			    </td>
+            </tr>
+        ";
+    }
+}
+
+class GlobalSum {
+    public $budgetedSum;
+    public $spentSum;
+    public $availableSum;
+
+    public function __construct($budgetedSum, $spentSum, $availableSum) {
+        $this->budgetedSum = $budgetedSum;
+        $this->spentSum = $spentSum;
+        $this->availableSum = $availableSum;
+    }
+
+    public function draw() {
+        return
+            "
+            <tr class='budSum'>
+				<td class='budSumName'>SUMA</td>
+				<td class='budSumAmount hideable'>" . number_format($this->budgetedSum, 2, ',', '') . " zł</td>
+				<td class='budSumAmount hideable'>" . number_format($this->spentSum, 2, ',', '') . " zł</td>
+				<td class='budSumAmount'>" . number_format($this->availableSum, 2, ',', '') . " zł</td>
+			</tr>
+		    ";
     }
 }
 
@@ -90,6 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $group;
         $category;
         $categories = "";
+        $newGroupRow = new NewGroup();
+        $globalSum = new GlobalSum(0, 0, 0);
+
 
         $sql = "SELECT GroupID, GroupName FROM Groups WHERE UserID = $userID AND GroupName != 'Do rozdysponowania'";
         foreach ($connection->query($sql) as $groupRow) {
@@ -109,10 +162,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $group->budgeted += $category->budgeted;
                 $group->spent += $category->spent;
                 $group->available = $group->budgeted + $group->spent;
+                $globalSum->budgetedSum += $group->budgeted;
+                $globalSum->spentSum += $group->spent;
+                $globalSum->availableSum += $group->available;
             }
 
             $budgetTable .= $group->draw() . $categories;
         }
+
+        $budgetTable .= $newGroupRow->draw();
+        $budgetTable .= $globalSum->draw();
         echo $budgetTable;
     }
     catch(PDOException $e) {
