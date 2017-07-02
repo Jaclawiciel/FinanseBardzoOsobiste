@@ -42,6 +42,7 @@ function displayAccounts() {
     xhttp.send();
 
     setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
+    setTimeout(function(){ formatAccountsAmount(); }, 300);
 }
 
 function deleteAccount(accountID) {
@@ -58,4 +59,21 @@ function deleteAccount(accountID) {
     var sheet = window.document.styleSheets[1];
     sheet.insertRule('#accountID' + accountID + ' { animation: slideLeft 0.3s ease 0s 1; }', sheet.cssRules.length);
     setTimeout(function(){ displayAccounts(); }, 300);
+}
+
+function formatAccountsAmount() {
+    "use strict";
+
+    // Description amounts
+    var descAmounts = document.getElementsByClassName('accountDescSum');
+    for (var i = 0; i < descAmounts.length; i++) {
+        descAmounts[i].innerHTML = descAmounts[i].innerHTML.replace(".", ",");
+    }
+
+    // Accounts amounts
+    var amounts = document.getElementsByClassName('accountAmount');
+    for (var i = 0; i < amounts.length; i++) {
+        amounts[i].innerHTML = amounts[i].innerHTML.replace(".", ",");
+    }
+
 }

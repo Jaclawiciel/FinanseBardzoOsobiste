@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                             <span onclick='displayTransactions(" . $this->accID . ")' class='accountName'>" . $this->name . "</span>
 					        <button class='deleteAccountButton' onclick='showDeleteConfirm(true," . $this->accID . ")'></button>
 					    </div>
-					    <span class='accountAmount'>" . $this->balance . " zł</span>
+					    <span class='accountAmount'>" . number_format($this->balance, 2, '.', '') . " zł</span>
 				    </div>
 				    <div class='delConfirmationDiv' id='delConfirmationDiv" . $this->accID . "'>
 				        <span>Czy na pewno chcesz usunąc konto?</span>
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             return
                 "<div class='accountsDesc'>
 					<span class='accountDescName'>" . $descName . "</span>
-					<span class='accountDescSum'>" . $this->balance . " zł</span>
+					<span class='accountDescSum'>" . number_format($this->balance, 2, '.', '') . " zł</span>
 				</div>";
         }
     }

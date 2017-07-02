@@ -220,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                         </td>
                                      </tr>";
             echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;
-            echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
+            echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 400)</script>";
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -255,7 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                         </td>
                                      </tr>";
             echo $headerStart . $transactionsHeader->draw() . $headerEnd . $sectionStart . $sectionAddButton . $sectionMiddle . $sectionNewTransactionBeforeSmallCat . $sectionNewTransactionSmallCat . $sectionNewTransactionAfterSmallCat . $sectionNewTransactionBeforeLargeCat . $sectionNewTransactionLargeCat . $sectionNewTransactionAfterLargeCat . $sectionNewTransactionEnd . $sectionNewTransactionButtons . $transactionRows . $sectionEnd;
-            echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 300)</script>";
+            echo "<script>setTimeout(function() { highlightAccount(" . $transactionsHeader->accID . ")}, 400)</script>";
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
