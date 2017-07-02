@@ -100,3 +100,19 @@ function deleteTransactions() {
     setTimeout(function(){ displayAccounts(); }, 300);
     setTimeout(function () { displayTransactions(currentAccountID); }, 350);
 }
+
+function allTransactionsCheck() {
+    var descCheckbox = document.getElementById('checkAllCheckbox');
+    var transactionRows = document.getElementsByClassName('transactionRow');
+    if (descCheckbox.checked) {
+        for (var i = 2; i < transactionRows.length; i++) {
+            var checkbox = transactionRows[i].getElementsByClassName('tranCheckInput')[0];
+            checkbox.checked = true;
+        }
+    } else {
+        for (var i = 2; i < transactionRows.length; i++) {
+            var checkbox = transactionRows[i].getElementsByClassName('tranCheckInput')[0];
+            checkbox.checked = false;
+        }
+    }
+}

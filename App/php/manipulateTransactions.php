@@ -90,7 +90,7 @@ class TransactionRow {
         return
             "
             <tr class='transactionRow' id='transactionRow" . $this->transactionID . "'>
-				<td class='tranElem tranCheck hid'><input type='checkbox' name='checkTran" . $this->transactionID . "' id='checkTran" . $this->transactionID . "'></td>
+				<td class='tranElem tranCheck hid'><input class='tranCheckInput' type='checkbox' name='checkTran" . $this->transactionID . "' id='checkTran" . $this->transactionID . "'></td>
 				<td class='tranElem tranDate'>" . $this->date . "</td>
 				<td class='small'>
 				    <span class='tranElem tranName'>" . $this->name . "</span>
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 						<thead>
 						<tr class=\"tranDesc\">
 							<th class=\"tranDescElem tranCheck\"><input type=\"checkbox\" name=\"checkAll\"
-							                                          id=\"checkAllCheckbox\"></th>
+							                                          id=\"checkAllCheckbox\" onclick='allTransactionsCheck()'></th>
 							<th class=\"tranDescElem tranDate\">Data transakcji</th>
 							<th class=\"tranDescElem tranName\">Nazwa transakcji</th>
 							<th class=\"tranDescElem tranCat\">Kategoria</th>

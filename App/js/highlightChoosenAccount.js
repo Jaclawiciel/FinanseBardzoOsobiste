@@ -4,7 +4,6 @@
 
 function highlightAccount(accountID) {
     "use strict";
-    window.console.log("TERAZ");
     var accountDivs = document.getElementsByClassName("accountDiv");
     for (var i = 0; i < accountDivs.length; i++) {
         accountDivs[i].classList.remove('active');
