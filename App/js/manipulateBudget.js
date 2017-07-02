@@ -220,13 +220,15 @@ function updateBudget(categoryID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("PUT", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("categoryID=" + categoryID + "&amount=" + amountValue);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 300);
+    // setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function addGroup() {
@@ -238,13 +240,15 @@ function addGroup() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("POST", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newGroupName=" + inputValue);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 300);
+    // setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function addCategoryToGroupID(groupID) {
@@ -258,13 +262,15 @@ function addCategoryToGroupID(groupID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("POST", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newCategoryName=" + inputValue + "&groupID=" + groupID);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 300);
+    // setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function deleteCategory(categoryID) {
@@ -274,6 +280,8 @@ function deleteCategory(categoryID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("DELETE", "../php/manipulateBudget.php", true);
@@ -282,8 +290,8 @@ function deleteCategory(categoryID) {
     xhttp.send(params);
     var sheet = window.document.styleSheets[1];
     sheet.insertRule('#rowCategoryID' + categoryID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
-    setTimeout(function(){ displayBudget(); }, 350);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 350);
+    // setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function deleteGroup(groupID) {
@@ -293,6 +301,8 @@ function deleteGroup(groupID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("DELETE", "../php/manipulateBudget.php", true);
@@ -314,6 +324,6 @@ function deleteGroup(groupID) {
         sheet.insertRule('#' + categoryIDs[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
     }
 
-    setTimeout(function(){ displayBudget(); }, 350);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 350);
+    // setTimeout(function(){ reloadToBudget(); }, 600);
 }

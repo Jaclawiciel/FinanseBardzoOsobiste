@@ -19,13 +19,14 @@ function addNewAccount() {
             if (this.responseText == "Konto utworzone") {
                 document.getElementById('newAccountForm').reset();
                 document.getElementById('newAccSubmitButton').disabled = true;
+                displayAccounts();
             }
         }
     };
     xhttp.open("POST", "../php/manipulateAccount.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&type=" + type);
-    setTimeout(function(){ displayAccounts(); }, 1000);
+    // setTimeout(function(){ displayAccounts(); }, 1000);
 }
 
 function displayAccounts() {
@@ -35,14 +36,15 @@ function displayAccounts() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             accountsDiv.innerHTML = this.responseText;
-
+            blockTransactionsIfNoAccounts();
+            formatAccountsAmount();
         }
     };
     xhttp.open("GET", "../php/manipulateAccount.php", true);
     xhttp.send();
 
-    setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
-    setTimeout(function(){ formatAccountsAmount(); }, 300);
+    // setTimeout(function(){ blockTransactionsIfNoAccounts(); }, 300);
+    // setTimeout(function(){ formatAccountsAmount(); }, 300);
 }
 
 function deleteAccount(accountID) {
@@ -51,6 +53,7 @@ function deleteAccount(accountID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayAccounts();
         }
     };
     xhttp.open("DELETE", "../php/manipulateAccount.php", true);
@@ -58,7 +61,7 @@ function deleteAccount(accountID) {
     xhttp.send("accountID=" + accountID);
     var sheet = window.document.styleSheets[1];
     sheet.insertRule('#accountID' + accountID + ' { animation: slideLeft 0.3s ease 0s 1; }', sheet.cssRules.length);
-    setTimeout(function(){ displayAccounts(); }, 300);
+    // setTimeout(function(){ displayAccounts(); }, 300);
 }
 
 function formatAccountsAmount() {

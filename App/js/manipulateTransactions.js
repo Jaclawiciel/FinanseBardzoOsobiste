@@ -24,19 +24,22 @@ function addNewTransactionFor(accountID) {
         categoryID = document.getElementById('NewTranCategoryIDSmall').value;
     }
     var amount = document.getElementById('NewTranAmountInput').value;
+    amount = amount.replace(",", ".");
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
             hideNewTransactionsRow();
+            displayAccounts();
+            displayTransactions(accountID);
         }
     };
     xhttp.open("POST", "../php/manipulateTransactions.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("date=" + date + "&name=" + name + "&categoryID=" + categoryID + "&amount=" + amount + "&accountID=" + accountID);
-    setTimeout(function(){ displayAccounts(); }, 500);
-    setTimeout(function(){ displayTransactions(accountID); }, 1000);
+    // setTimeout(function(){ displayAccounts(); }, 500);
+    // setTimeout(function(){ displayTransactions(accountID); }, 1000);
 }
 
 function displayTransactions(accountID) {
@@ -83,6 +86,8 @@ function deleteTransactions() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
+            displayAccounts();
+            displayTransactions(currentAccountID);
         }
     };
     xhttp.open("DELETE", "../php/manipulateTransactions.php", true);
@@ -97,8 +102,8 @@ function deleteTransactions() {
         sheet.insertRule('#transactionRow' + transactionsToDelete[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
     }
     xhttp.send(params);
-    setTimeout(function(){ displayAccounts(); }, 300);
-    setTimeout(function () { displayTransactions(currentAccountID); }, 350);
+    // setTimeout(function(){ displayAccounts(); }, 300);
+    // setTimeout(function () { displayTransactions(currentAccountID); }, 350);
 }
 
 function allTransactionsCheck() {
