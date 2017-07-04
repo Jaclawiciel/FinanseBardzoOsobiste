@@ -53,7 +53,7 @@ function deleteAccount(accountID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
-            displayAccounts();
+            // displayAccounts();
         }
     };
     xhttp.open("DELETE", "../php/manipulateAccount.php", true);
@@ -61,7 +61,7 @@ function deleteAccount(accountID) {
     xhttp.send("accountID=" + accountID);
     var sheet = window.document.styleSheets[1];
     sheet.insertRule('#accountID' + accountID + ' { animation: slideLeft 0.3s ease 0s 1; }', sheet.cssRules.length);
-    // setTimeout(function(){ displayAccounts(); }, 300);
+    setTimeout(function(){ displayAccounts(); }, 300);
 }
 
 function formatAccountsAmount() {

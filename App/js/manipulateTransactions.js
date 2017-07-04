@@ -86,8 +86,8 @@ function deleteTransactions() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
-            displayAccounts();
-            displayTransactions(currentAccountID);
+            // displayAccounts();
+            // displayTransactions(currentAccountID);
         }
     };
     xhttp.open("DELETE", "../php/manipulateTransactions.php", true);
@@ -102,8 +102,8 @@ function deleteTransactions() {
         sheet.insertRule('#transactionRow' + transactionsToDelete[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
     }
     xhttp.send(params);
-    // setTimeout(function(){ displayAccounts(); }, 300);
-    // setTimeout(function () { displayTransactions(currentAccountID); }, 350);
+    setTimeout(function(){ displayAccounts(); }, 300);
+    setTimeout(function () { displayTransactions(currentAccountID); }, 350);
 }
 
 function allTransactionsCheck() {

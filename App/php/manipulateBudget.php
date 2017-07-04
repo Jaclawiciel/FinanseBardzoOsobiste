@@ -197,11 +197,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $group->budgeted += $category->budgeted;
                 $group->spent += $category->spent;
                 $group->available = $group->budgeted + $group->spent;
-                $globalSum->budgetedSum += $group->budgeted;
-                $globalSum->spentSum += $group->spent;
-                $globalSum->availableSum += $group->available;
             }
-
+            $globalSum->budgetedSum += $group->budgeted;
+            $globalSum->spentSum += $group->spent;
+            $globalSum->availableSum += $group->available;
             $budgetTable .= $group->draw() . $group->newCategoryRow->draw() . $categories;
         }
 

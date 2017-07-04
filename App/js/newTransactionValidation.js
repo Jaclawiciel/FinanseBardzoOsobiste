@@ -83,7 +83,7 @@ function dateValidation(value) {
 
 function transactionNameValidation(value) {
     "use strict";
-    var pattern = /^[\w\s()]+$/;
+    var pattern = /^(([a-zA-zóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+) ?([a-zA-ZóÓąĄśŚłŁżŻźŹćĆńŃ0-9]+))+$/;
     return !pattern.test(value);
 }
 
