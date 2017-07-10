@@ -103,6 +103,7 @@ function reloadToBudget() {
     var toBudgetDiv = document.getElementById('toBudgetDiv');
     var toBudgetAmountElement = document.getElementById('toBudgetAmount');
 
+
     var accounts = document.getElementById("budgetAccounts").getElementsByClassName('accountAmount');
     var accountsSum = 0.00;
     for (var i = 0; i < accounts.length; i++) {
@@ -119,7 +120,17 @@ function reloadToBudget() {
         budgetedSum += parseFloat(currentBudgeted);
     }
 
-    var toBudgetAmount = (accountsSum - budgetedSum).toFixed(2);
+    var spentElements = document.getElementsByClassName('spent');
+    var spentSum = 0.00;
+    for (var i = 0; i < spentElements.length; i++) {
+        var currentSpent = spentElements[i].innerHTML;
+        currentSpent = currentSpent.replace(" zł", "");
+        currentSpent = currentSpent.replace(",", ".");
+
+        spentSum += parseFloat(currentSpent);
+    }
+
+    var toBudgetAmount = (accountsSum - budgetedSum - spentSum).toFixed(2);
 
     toBudgetAmountElement.innerHTML = toBudgetAmount.replace(".", ",") + " zł";
 
@@ -142,7 +153,11 @@ function reloadToBudget() {
     }
 
     // Available coloring
-    var availables = document.getElementsByClassName('budCatAmount available');
+    var availables
+    do {
+        availables = document.getElementsByClassName('budCatAmount available');
+    } while (availables === null)
+
     for (var i = 0; i < availables.length; i++) {
         var available = availables[i].getElementsByTagName('span')[0];
         var availableValue = parseFloat(available.innerHTML.replace(" zł", ""));
@@ -181,7 +196,7 @@ function displayBudget() {
             document.getElementById('budgetGoesHere').innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "../php/manipulateBudget.php", true);
+    xhttp.open("GET", "../php/manipulateBudget.php", false);
     xhttp.send();
 }
 
@@ -220,15 +235,15 @@ function updateBudget(categoryID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
-            // displayBudget();
-            // reloadToBudget();
+            displayBudget();
+            reloadToBudget();
         }
     };
-    xhttp.open("PUT", "../php/manipulateBudget.php", true);
+    xhttp.open("PUT", "../php/manipulateBudget.php", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("categoryID=" + categoryID + "&amount=" + amountValue);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    // setTimeout(function(){ displayBudget(); }, 300);
+    // setTimeout(function(){ reloadToBudget(); }, 300);
 }
 
 function addGroup() {
@@ -240,15 +255,13 @@ function addGroup() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
-            // displayBudget();
-            // reloadToBudget();
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("POST", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newGroupName=" + inputValue);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function addCategoryToGroupID(groupID) {
@@ -262,15 +275,13 @@ function addCategoryToGroupID(groupID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             window.console.log(this.responseText);
-            // displayBudget();
-            // reloadToBudget();
+            displayBudget();
+            reloadToBudget();
         }
     };
     xhttp.open("POST", "../php/manipulateBudget.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("newCategoryName=" + inputValue + "&groupID=" + groupID);
-    setTimeout(function(){ displayBudget(); }, 300);
-    setTimeout(function(){ reloadToBudget(); }, 600);
 }
 
 function deleteCategory(categoryID) {
@@ -290,8 +301,7 @@ function deleteCategory(categoryID) {
     xhttp.send(params);
     var sheet = window.document.styleSheets[1];
     sheet.insertRule('#rowCategoryID' + categoryID + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
-    setTimeout(function(){ displayBudget(); }, 350);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    setTimeout(function(){ displayBudget(); reloadToBudget(); }, 350);
 }
 
 function deleteGroup(groupID) {
@@ -324,6 +334,5 @@ function deleteGroup(groupID) {
         sheet.insertRule('#' + categoryIDs[i] + ' { animation: slideLeft 0.35s ease 0s 1; }', sheet.cssRules.length);
     }
 
-    setTimeout(function(){ displayBudget(); }, 350);
-    setTimeout(function(){ reloadToBudget(); }, 600);
+    setTimeout(function(){ displayBudget(); reloadToBudget(); }, 350);
 }

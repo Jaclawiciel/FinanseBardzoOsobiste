@@ -292,7 +292,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    /****** PUT REQUEST ******/
+    /****** DELETE REQUEST ******/
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     parse_str(file_get_contents("php://input"), $delete_vars);
     foreach ($delete_vars as $key => $value) {
